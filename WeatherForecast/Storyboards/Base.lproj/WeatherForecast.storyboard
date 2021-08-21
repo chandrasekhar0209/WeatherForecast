@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfk-ck-dju" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-268" y="-595"/>
+            <point key="canvasLocation" x="1087" y="31"/>
         </scene>
         <!--Home-->
         <scene sceneID="dbS-Jg-twr">
@@ -42,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwD-x7-wYt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-665" y="31"/>
+            <point key="canvasLocation" x="222" y="31"/>
         </scene>
         <!--Weather Tab Controller-->
         <scene sceneID="Nc0-Bz-MMQ">

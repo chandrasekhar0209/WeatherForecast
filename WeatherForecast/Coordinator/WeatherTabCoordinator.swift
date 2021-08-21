@@ -10,9 +10,7 @@ import UIKit
 class WeatherTabCoordinator: CoordinatorProtocol {
     func loadRootViewController(in window: UIWindow?) {
         let weatherTab: StoryboardProtocol = WeatherTabController()
-        guard let weatherTabController = weatherTab.instantiateStoryboard() as? WeatherTabController else {
-            return
-        }
+        guard let weatherTabController = weatherTab.instantiateControllerFromStoryboard() as? WeatherTabController else { return }
         
         let leftBarButtonItem = UIBarButtonItem(title: "Edit",
                                                 style: .plain,
@@ -23,7 +21,8 @@ class WeatherTabCoordinator: CoordinatorProtocol {
                                                  target: self,
                                                  action: #selector(weatherTabController.rightButtonAction(sender:)))
 
-        let navigationProperties = NavigationControllerProperties(rootViewController: weatherTabController,
+        let navigationProperties = NavigationControllerProperties(rootController: weatherTabController,
+                                                                  title: "Bookmark",
                                                                   leftBarItems: [leftBarButtonItem],
                                                                   rightBarItems: [rightBarButtonItem])
         window?.rootViewController = UINavigationController.withProperties(navigationProperties)

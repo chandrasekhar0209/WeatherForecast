@@ -11,8 +11,6 @@ class WeatherTabController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.title = "Bookmark"
     }
 }
 
@@ -27,7 +25,7 @@ extension WeatherTabController: StoryboardProtocol {
         return UIStoryboard(name: Storybords.weatherForecast.rawValue, bundle: nil)
     }
     
-    func instantiateStoryboard() -> UIViewController? {
+    func instantiateControllerFromStoryboard() -> UIViewController? {
         guard let rootVC = initialiseStoryboard().instantiateViewController(identifier: "WeatherTabController") as? WeatherTabController else {
             return nil
         }

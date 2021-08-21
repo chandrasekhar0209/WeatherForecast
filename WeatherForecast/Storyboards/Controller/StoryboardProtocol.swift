@@ -9,7 +9,7 @@ import UIKit
 
 protocol StoryboardProtocol {
     func initialiseStoryboard() -> UIStoryboard
-    func instantiateStoryboard() -> UIViewController?
+    func instantiateControllerFromStoryboard() -> UIViewController?
 }
 
 enum Storybords: String {
