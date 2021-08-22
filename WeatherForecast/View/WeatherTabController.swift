@@ -15,8 +15,22 @@ class WeatherTabController: UITabBarController {
 }
 
 extension WeatherTabController {
-    @objc func rightButtonAction(sender: Any) {
+    @objc func leftButtonAction(sender: UIBarButtonItem) {
+        let addNewCity: StoryboardProtocol = AddNewCityViewController()
+        guard let addNewCityViewController = addNewCity.instantiateControllerFromStoryboard() else {
+            return
+        }
         
+        self.navigationController?.pushViewController(addNewCityViewController, animated: true)
+    }
+    
+    @objc func rightButtonAction(sender: UIBarButtonItem) {
+        let addNewCity: StoryboardProtocol = AddNewCityViewController()
+        guard let addNewCityViewController = addNewCity.instantiateControllerFromStoryboard() else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(addNewCityViewController, animated: true)
     }
 }
 
@@ -26,10 +40,10 @@ extension WeatherTabController: StoryboardProtocol {
     }
     
     func instantiateControllerFromStoryboard() -> UIViewController? {
-        guard let rootVC = initialiseStoryboard().instantiateViewController(identifier: "WeatherTabController") as? WeatherTabController else {
+        guard let viewController = initialiseStoryboard().instantiateViewController(identifier: "WeatherTabController") as? WeatherTabController else {
             return nil
         }
         
-        return rootVC
+        return viewController
     }
 }

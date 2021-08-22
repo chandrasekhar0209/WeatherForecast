@@ -14,15 +14,15 @@ class WeatherTabCoordinator: CoordinatorProtocol {
         
         let leftBarButtonItem = UIBarButtonItem(title: "Edit",
                                                 style: .plain,
-                                                target: self,
-                                                action: #selector(weatherTabController.rightButtonAction(sender:)))
+                                                target: weatherTabController,
+                                                action: #selector(weatherTabController.leftButtonAction(sender:)))
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"),
                                                  style: .plain,
-                                                 target: self,
+                                                 target: weatherTabController,
                                                  action: #selector(weatherTabController.rightButtonAction(sender:)))
 
         let navigationProperties = NavigationControllerProperties(rootController: weatherTabController,
-                                                                  title: "Bookmark",
+                                                                  title: "Saved Cities",
                                                                   leftBarItems: [leftBarButtonItem],
                                                                   rightBarItems: [rightBarButtonItem])
         window?.rootViewController = UINavigationController.withProperties(navigationProperties)
