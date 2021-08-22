@@ -62,5 +62,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>baseUrl</key>
+	<string>http://api.openweathermap.org</string>
+	<key>appId</key>
+	<string>fae7190d7e6433ec3a45285ffcf55c86</string>
 </dict>
 </plist>

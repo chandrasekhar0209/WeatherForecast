@@ -32,6 +32,13 @@
 		C52E831826D2068F005CEE5D /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E831726D2068F005CEE5D /* ErrorView.xib */; };
 		C52E831A26D259A8005CEE5D /* AddNewCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E831926D259A8005CEE5D /* AddNewCityViewController.swift */; };
 		C52E831C26D26608005CEE5D /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E831B26D26608005CEE5D /* UIBarButtonItem+Extensions.swift */; };
+		C52E832026D29501005CEE5D /* ServiceRequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E831F26D29501005CEE5D /* ServiceRequestRouter.swift */; };
+		C52E832226D29D45005CEE5D /* ForecastRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E832126D29D45005CEE5D /* ForecastRouter.swift */; };
+		C52E832426D2D710005CEE5D /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E832326D2D710005CEE5D /* ServiceManager.swift */; };
+		C52E832726D2DA71005CEE5D /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E832626D2DA71005CEE5D /* NetworkClient.swift */; };
+		C52E832926D2E524005CEE5D /* ServiceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E832826D2E524005CEE5D /* ServiceDetails.swift */; };
+		C52E832B26D2E944005CEE5D /* CityWeatherDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E832A26D2E944005CEE5D /* CityWeatherDetailsViewController.swift */; };
+		C52E832D26D2E9FB005CEE5D /* CityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E832C26D2E9FB005CEE5D /* CityDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +90,13 @@
 		C52E831726D2068F005CEE5D /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		C52E831926D259A8005CEE5D /* AddNewCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCityViewController.swift; sourceTree = "<group>"; };
 		C52E831B26D26608005CEE5D /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
+		C52E831F26D29501005CEE5D /* ServiceRequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestRouter.swift; sourceTree = "<group>"; };
+		C52E832126D29D45005CEE5D /* ForecastRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRouter.swift; sourceTree = "<group>"; };
+		C52E832326D2D710005CEE5D /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		C52E832626D2DA71005CEE5D /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		C52E832826D2E524005CEE5D /* ServiceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetails.swift; sourceTree = "<group>"; };
+		C52E832A26D2E944005CEE5D /* CityWeatherDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherDetailsViewController.swift; sourceTree = "<group>"; };
+		C52E832C26D2E9FB005CEE5D /* CityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,11 +147,13 @@
 		C52E82BD26CFC8F3005CEE5D /* WeatherForecast */ = {
 			isa = PBXGroup;
 			children = (
+				C52E832526D2DA58005CEE5D /* NetworkClient */,
+				C52E831D26D294D7005CEE5D /* Services */,
 				C52E830826D137B8005CEE5D /* Model */,
-				C52E830526D0C7AA005CEE5D /* LocalStorage */,
 				C52E82F126D0245C005CEE5D /* View */,
 				C52E830226D0BA24005CEE5D /* ViewModel */,
 				C52E82FB26D035B0005CEE5D /* Coordinator */,
+				C52E830526D0C7AA005CEE5D /* LocalStorage */,
 				C52E82F226D0246E005CEE5D /* Storyboards */,
 				C52E82F826D0329F005CEE5D /* Extensions */,
 				C52E82BE26CFC8F3005CEE5D /* AppDelegate.swift */,
@@ -175,6 +191,7 @@
 				C52E82F326D027E8005CEE5D /* WeatherTabController.swift */,
 				C52E830D26D1F8FB005CEE5D /* BookmarksViewController.swift */,
 				C52E831926D259A8005CEE5D /* AddNewCityViewController.swift */,
+				C52E832A26D2E944005CEE5D /* CityWeatherDetailsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				C52E830326D0BA48005CEE5D /* BookmarksViewModel.swift */,
+				C52E832C26D2E9FB005CEE5D /* CityDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -257,6 +275,33 @@
 				C52E831726D2068F005CEE5D /* ErrorView.xib */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		C52E831D26D294D7005CEE5D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C52E831E26D294E6005CEE5D /* RequestRouter */,
+				C52E832326D2D710005CEE5D /* ServiceManager.swift */,
+				C52E832826D2E524005CEE5D /* ServiceDetails.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C52E831E26D294E6005CEE5D /* RequestRouter */ = {
+			isa = PBXGroup;
+			children = (
+				C52E831F26D29501005CEE5D /* ServiceRequestRouter.swift */,
+				C52E832126D29D45005CEE5D /* ForecastRouter.swift */,
+			);
+			path = RequestRouter;
+			sourceTree = "<group>";
+		};
+		C52E832526D2DA58005CEE5D /* NetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				C52E832626D2DA71005CEE5D /* NetworkClient.swift */,
+			);
+			path = NetworkClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,21 +437,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				C52E831C26D26608005CEE5D /* UIBarButtonItem+Extensions.swift in Sources */,
+				C52E832226D29D45005CEE5D /* ForecastRouter.swift in Sources */,
 				C52E830E26D1F8FB005CEE5D /* BookmarksViewController.swift in Sources */,
+				C52E832726D2DA71005CEE5D /* NetworkClient.swift in Sources */,
 				C52E830426D0BA48005CEE5D /* BookmarksViewModel.swift in Sources */,
 				C52E830A26D13808005CEE5D /* BookmarkModel.swift in Sources */,
+				C52E832426D2D710005CEE5D /* ServiceManager.swift in Sources */,
 				C52E82F726D02B3E005CEE5D /* StoryboardProtocol.swift in Sources */,
+				C52E832926D2E524005CEE5D /* ServiceDetails.swift in Sources */,
 				C52E82FF26D0363E005CEE5D /* WeatherTabCoordinator.swift in Sources */,
 				C52E831226D20183005CEE5D /* BookmarkCell.swift in Sources */,
 				C52E830726D0C7C6005CEE5D /* StorageManager.swift in Sources */,
 				C52E82FA26D032B8005CEE5D /* String+Extensions.swift in Sources */,
 				C52E830126D03733005CEE5D /* UINavigationController+Extensions.swift in Sources */,
 				C52E82FD26D035CD005CEE5D /* CoordinatorProtocol.swift in Sources */,
+				C52E832B26D2E944005CEE5D /* CityWeatherDetailsViewController.swift in Sources */,
+				C52E832D26D2E9FB005CEE5D /* CityDetailsViewModel.swift in Sources */,
 				C52E830C26D13E17005CEE5D /* EntityDetails.swift in Sources */,
 				C52E82F426D027E8005CEE5D /* WeatherTabController.swift in Sources */,
 				C52E82BF26CFC8F3005CEE5D /* AppDelegate.swift in Sources */,
 				C52E82C126CFC8F3005CEE5D /* SceneDelegate.swift in Sources */,
 				C52E82C926CFC8F3005CEE5D /* WeatherForecast.xcdatamodeld in Sources */,
+				C52E832026D29501005CEE5D /* ServiceRequestRouter.swift in Sources */,
 				C52E831626D20682005CEE5D /* ErrorView.swift in Sources */,
 				C52E831A26D259A8005CEE5D /* AddNewCityViewController.swift in Sources */,
 			);

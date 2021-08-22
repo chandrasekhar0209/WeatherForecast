@@ -96,6 +96,21 @@
             </objects>
             <point key="canvasLocation" x="-538" y="-642"/>
         </scene>
+        <!--City Weather Details View Controller-->
+        <scene sceneID="2qp-FT-T2b">
+            <objects>
+                <viewController storyboardIdentifier="CityWeatherDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UZR-RD-HnY" customClass="CityWeatherDetailsViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rs7-f6-u42">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ura-un-k7Q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ua0-zz-qkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1332" y="-73"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>

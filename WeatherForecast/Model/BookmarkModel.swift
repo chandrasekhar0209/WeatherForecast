@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookmarkModel {
+struct BookmarkModel: Codable {
     var cityName: String
     var latitude: Double
     var longitude: Double
