@@ -38,4 +38,11 @@ enum ForecastRouter: ServiceRequestRouter {
             return ["lat": latitude, "lon": longitude]
         }
     }
+    
+    var body: Parameters? {
+        switch self {
+        case .todayForecast, .fiveDayForecast:
+            return nil
+        }
+    }
 }

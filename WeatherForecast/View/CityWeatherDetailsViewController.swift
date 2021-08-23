@@ -22,21 +22,53 @@ class CityWeatherDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchTodayForecast(router: .todayForecast(0, 0))
-        fetchFiveDayForecast(router: .fiveDayForecast(0, 0))
+//        fetchTodayForecast(router: .todayForecast(17.38405, 78.45636))
+        fetchFiveDayForecast(router: .fiveDayForecast(17.38405, 78.45636))
     }
 }
 
 extension CityWeatherDetailsViewController {
     func fetchTodayForecast(router: ForecastRouter)  {
-        cityDetailsViewModel.fetchCityForecast(router: router, codable: BookmarkModel.self) { result in
-            
+        cityDetailsViewModel.fetchCityForecast(router: router, codable: TodayForecastModel.self) { result in
+            switch result {
+            case .success(let model):
+                guard let todayForecastModel = model as? TodayForecastModel else {
+                    return
+                }
+                
+                print(todayForecastModel.cityName)
+            case .failure(let error):
+                print(error?.localizedDescription)
+            }
         }
     }
     
     func fetchFiveDayForecast(router: ForecastRouter) {
-        cityDetailsViewModel.fetchCityForecast(router: router, codable: BookmarkModel.self) { result in
-            
+        cityDetailsViewModel.fetchCityForecast(router: router, codable: FiveDayForecastModel.self) { result in
+            switch result {
+            case .success(let model):
+                guard let todayForecastModel = model as? FiveDayForecastModel else {
+                    return
+                }
+                
+                print(todayForecastModel.city?.name)
+            case .failure(let error):
+                print(error?.localizedDescription)
+            }
         }
+    }
+}
+
+extension CityWeatherDetailsViewController: StoryboardProtocol {
+    func initialiseStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: Storybords.weatherForecast.rawValue, bundle: nil)
+    }
+    
+    func instantiateControllerFromStoryboard() -> UIViewController? {
+        guard let viewController = initialiseStoryboard().instantiateViewController(identifier: "CityWeatherDetailsViewController") as? CityWeatherDetailsViewController else {
+            return nil
+        }
+        
+        return viewController
     }
 }

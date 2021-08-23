@@ -25,7 +25,7 @@ extension WeatherTabController {
     }
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {
-        let addNewCity: StoryboardProtocol = AddNewCityViewController()
+        let addNewCity: StoryboardProtocol = CityWeatherDetailsViewController()
         guard let addNewCityViewController = addNewCity.instantiateControllerFromStoryboard() else {
             return
         }

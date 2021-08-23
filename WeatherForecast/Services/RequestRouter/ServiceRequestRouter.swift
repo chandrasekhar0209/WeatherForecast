@@ -20,6 +20,7 @@ protocol ServiceRequestRouter {
 extension ServiceRequestRouter {
     public func asURLRequest() throws -> URLRequest {
         let url = try asURL()
+        print(url)
         let urlRequest = NSMutableURLRequest(url: url)
         urlRequest.httpMethod = methodType.rawValue
 
@@ -31,7 +32,7 @@ extension ServiceRequestRouter {
 
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
 
-        headers.forEach { key, value in
+        for (key, value) in headers {
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
         
@@ -44,11 +45,13 @@ extension ServiceRequestRouter {
     
     public func asURL() throws -> URL {
         var urlComponents = URLComponents(string:fullUrl)
-        queryItems.forEach { (key: String, value: Any) in
-            urlComponents?.queryItems?.append(URLQueryItem(name: key, value: "\(value)"))
-        }
         if let value = try? ServiceDetails.fetch().appId {
-            urlComponents?.queryItems?.append(URLQueryItem(name: "appid", value: value))
+            urlComponents?.queryItems = [
+                URLQueryItem(name: "appid", value: value)
+            ]
+        }
+        for (key, value) in queryItems {
+            urlComponents?.queryItems?.append(URLQueryItem(name: key, value: "\(value)"))
         }
 
         return (urlComponents?.url)!
@@ -66,10 +69,6 @@ extension ServiceRequestRouter {
     
     var fullUrl: String {
         return baseUrl + path
-    }
-
-    var body: Parameters? {
-        return Parameters()
     }
 }
 
