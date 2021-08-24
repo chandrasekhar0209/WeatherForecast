@@ -8,7 +8,6 @@
 import UIKit
 
 class WeatherTabController: UITabBarController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -16,16 +15,19 @@ class WeatherTabController: UITabBarController {
 
 extension WeatherTabController {
     @objc func leftButtonAction(sender: UIBarButtonItem) {
-        let addNewCity: StoryboardProtocol = AddNewCityViewController()
-        guard let addNewCityViewController = addNewCity.instantiateControllerFromStoryboard() else {
+        guard let tabControllers = self.viewControllers else {
             return
         }
-        
-        self.navigationController?.pushViewController(addNewCityViewController, animated: true)
+        for controller in tabControllers {
+            if let bookmarksController = controller as? BookmarksViewController {
+                bookmarksController.editTable()
+                break
+            }
+        }
     }
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {
-        let addNewCity: StoryboardProtocol = CityWeatherDetailsViewController()
+        let addNewCity: StoryboardProtocol = AddNewCityViewController()
         guard let addNewCityViewController = addNewCity.instantiateControllerFromStoryboard() else {
             return
         }

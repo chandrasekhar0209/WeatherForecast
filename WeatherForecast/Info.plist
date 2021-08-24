@@ -25,6 +25,12 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Weather App requires your location to fetch latest Weather Forecast Details</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Weather App requires your location to fetch latest Weather Forecast Details</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Weather App requires your location to fetch latest Weather Forecast Details</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

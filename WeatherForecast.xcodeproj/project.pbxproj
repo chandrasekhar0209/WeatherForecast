@@ -41,6 +41,8 @@
 		C52E832D26D2E9FB005CEE5D /* CityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E832C26D2E9FB005CEE5D /* CityDetailsViewModel.swift */; };
 		C52E832F26D371F5005CEE5D /* TodayForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E832E26D371F5005CEE5D /* TodayForecastModel.swift */; };
 		C52E833126D3816E005CEE5D /* FiveDayForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E833026D3816E005CEE5D /* FiveDayForecastModel.swift */; };
+		C52E833326D39FEB005CEE5D /* CitySearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E833226D39FEB005CEE5D /* CitySearchTable.swift */; };
+		C52E833826D49464005CEE5D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E833726D49464005CEE5D /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		C52E832C26D2E9FB005CEE5D /* CityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModel.swift; sourceTree = "<group>"; };
 		C52E832E26D371F5005CEE5D /* TodayForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayForecastModel.swift; sourceTree = "<group>"; };
 		C52E833026D3816E005CEE5D /* FiveDayForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayForecastModel.swift; sourceTree = "<group>"; };
+		C52E833226D39FEB005CEE5D /* CitySearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchTable.swift; sourceTree = "<group>"; };
+		C52E833726D49464005CEE5D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 				C52E830D26D1F8FB005CEE5D /* BookmarksViewController.swift */,
 				C52E831926D259A8005CEE5D /* AddNewCityViewController.swift */,
 				C52E832A26D2E944005CEE5D /* CityWeatherDetailsViewController.swift */,
+				C52E833226D39FEB005CEE5D /* CitySearchTable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				C52E82F926D032B8005CEE5D /* String+Extensions.swift */,
 				C52E830026D03733005CEE5D /* UINavigationController+Extensions.swift */,
 				C52E831B26D26608005CEE5D /* UIBarButtonItem+Extensions.swift */,
+				C52E833726D49464005CEE5D /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				C52E832926D2E524005CEE5D /* ServiceDetails.swift in Sources */,
 				C52E82FF26D0363E005CEE5D /* WeatherTabCoordinator.swift in Sources */,
 				C52E831226D20183005CEE5D /* BookmarkCell.swift in Sources */,
+				C52E833326D39FEB005CEE5D /* CitySearchTable.swift in Sources */,
 				C52E830726D0C7C6005CEE5D /* StorageManager.swift in Sources */,
 				C52E832F26D371F5005CEE5D /* TodayForecastModel.swift in Sources */,
 				C52E82FA26D032B8005CEE5D /* String+Extensions.swift in Sources */,
@@ -464,6 +471,7 @@
 				C52E830C26D13E17005CEE5D /* EntityDetails.swift in Sources */,
 				C52E82F426D027E8005CEE5D /* WeatherTabController.swift in Sources */,
 				C52E82BF26CFC8F3005CEE5D /* AppDelegate.swift in Sources */,
+				C52E833826D49464005CEE5D /* UIView+Extensions.swift in Sources */,
 				C52E82C126CFC8F3005CEE5D /* SceneDelegate.swift in Sources */,
 				C52E82C926CFC8F3005CEE5D /* WeatherForecast.xcdatamodeld in Sources */,
 				C52E832026D29501005CEE5D /* ServiceRequestRouter.swift in Sources */,

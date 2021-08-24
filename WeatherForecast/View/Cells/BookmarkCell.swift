@@ -10,6 +10,7 @@ import UIKit
 class BookmarkCell: UITableViewCell {
     @IBOutlet weak var bookMarkTitle: UILabel!
     static let identifier = "BookmarkCell"
+    static let nibName = "BookmarkCell"
     func configureCell(with data: BookmarkModel) {
         bookMarkTitle.text = data.cityName
     }

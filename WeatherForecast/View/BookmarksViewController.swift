@@ -9,7 +9,7 @@ import UIKit
 
 class BookmarksViewController: UIViewController {
     @IBOutlet weak var bookmarkTableView: UITableView!
-    var bookmarkViewModel: BookmarksProtocol
+    var bookmarkViewModel: BookmarksFetchProtocol
     var bookmarks = [BookmarkModel]()
     lazy var errorView: ErrorView? = {
         guard let errorView = UINib(nibName: ErrorView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? ErrorView else {
@@ -25,7 +25,7 @@ class BookmarksViewController: UIViewController {
         return errorView
     }()
     
-    init(bookmarkViewModel: BookmarksProtocol = BookMarksViewModel()) {
+    init(bookmarkViewModel: BookmarksFetchProtocol = BookMarksViewModel()) {
         self.bookmarkViewModel = bookmarkViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,13 +39,25 @@ class BookmarksViewController: UIViewController {
         super.viewDidLoad()
         configureController()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchBookmarks()
+    }
+}
+
+extension BookmarksViewController {
+    func editTable() {
+        bookmarkTableView.isEditing = !bookmarkTableView.isEditing
+    }
 }
 
 private extension BookmarksViewController {
     func configureController() {
         bookmarkTableView.delegate = self
         bookmarkTableView.dataSource = self
-        fetchBookmarks()
+        bookmarkTableView.separatorStyle = .none
+        bookmarkTableView.register(UINib(nibName: BookmarkCell.nibName, bundle: nil), forCellReuseIdentifier: BookmarkCell.identifier)
     }
     
     func fetchBookmarks() {
@@ -75,9 +87,21 @@ private extension BookmarksViewController {
 }
 
 extension BookmarksViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bookmarkModel = bookmarks[indexPath.row]
         print(bookmarkModel.cityName)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            bookmarks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            processNextStep()
+        }
     }
 }
 

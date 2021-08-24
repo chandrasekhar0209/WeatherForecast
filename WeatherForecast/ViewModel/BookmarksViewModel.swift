@@ -7,8 +7,11 @@
 
 import Foundation
 
-protocol BookmarksProtocol {
+protocol BookmarksSaveProtocol {
     func saveBookMark(with data: BookmarkModel, completion: (StorageResult<String, Error>) -> Void)
+}
+
+protocol BookmarksFetchProtocol {
     func fetchAllSavedBookmarks(completion: (StorageResult<[BookmarkModel], Error>) -> Void)
 }
 
@@ -20,7 +23,7 @@ class BookMarksViewModel {
     }
 }
 
-extension BookMarksViewModel: BookmarksProtocol {
+extension BookMarksViewModel: BookmarksSaveProtocol {
     func saveBookMark(with data: BookmarkModel, completion: (StorageResult<String, Error>) -> Void) {
         var bookmarkData = [String: Any]()
         bookmarkData[BookmarkEntityKeys.cityName.rawValue] = data.cityName
@@ -30,14 +33,21 @@ extension BookMarksViewModel: BookmarksProtocol {
             completion(result)
         }
     }
-    
+}
+
+extension BookMarksViewModel: BookmarksFetchProtocol {
     func fetchAllSavedBookmarks(completion: (StorageResult<[BookmarkModel], Error>) -> Void) {
         storageManager.fetchRecords(forEntity: .bookmarks) { result in
             switch result {
             case .success(let managedObjects):
-                guard let bookmarkObjects = managedObjects as? [BookmarkModel] else {
-                    completion(.success([BookmarkModel]()))
-                    return
+                var bookmarkObjects = [BookmarkModel]()
+                managedObjects.forEach { managedObject in
+                    if let city = managedObject.value(forKey: BookmarkEntityKeys.cityName.rawValue) as? String,
+                       let latitude = managedObject.value(forKey: BookmarkEntityKeys.latitude.rawValue) as? Double,
+                       let longitude = managedObject.value(forKey: BookmarkEntityKeys.longitude.rawValue) as? Double {
+                        let bookmarkModel = BookmarkModel(cityName: city, latitude: latitude, longitude: longitude)
+                        bookmarkObjects.append(bookmarkModel)
+                    }
                 }
                 
                 completion(.success(bookmarkObjects))

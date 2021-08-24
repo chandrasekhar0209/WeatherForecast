@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,10 +11,13 @@
         <scene sceneID="keR-lC-92F">
             <objects>
                 <viewController id="lmY-85-Hzx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O4M-xc-Ykz"/>
+                        <viewControllerLayoutGuide type="bottom" id="YT4-5M-e2E"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5MJ-Pg-xox">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="91c-3W-cym"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Help" image="questionmark.circle" catalog="system" selectedImage="questionmark.circle.fill" id="1mf-g5-XoG">
@@ -30,6 +32,10 @@
         <scene sceneID="dbS-Jg-twr">
             <objects>
                 <viewController storyboardIdentifier="BookmarksViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3ER-4Y-Vjc" customClass="BookmarksViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="noz-4h-IgA"/>
+                        <viewControllerLayoutGuide type="bottom" id="XGj-54-DUG"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BVH-bS-BbH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,13 +49,12 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="t43-am-Npn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="t43-am-Npn" firstAttribute="trailing" secondItem="E6U-Zq-Z9v" secondAttribute="trailing" constant="5" id="32n-1N-aPo"/>
-                            <constraint firstItem="t43-am-Npn" firstAttribute="bottom" secondItem="E6U-Zq-Z9v" secondAttribute="bottom" constant="5" id="9vl-IH-Gvf"/>
-                            <constraint firstItem="E6U-Zq-Z9v" firstAttribute="leading" secondItem="t43-am-Npn" secondAttribute="leading" constant="5" id="NAo-P6-LEu"/>
-                            <constraint firstItem="E6U-Zq-Z9v" firstAttribute="top" secondItem="t43-am-Npn" secondAttribute="top" constant="5" id="zbK-gy-Ln6"/>
+                            <constraint firstAttribute="trailing" secondItem="E6U-Zq-Z9v" secondAttribute="trailing" constant="5" id="32n-1N-aPo"/>
+                            <constraint firstItem="XGj-54-DUG" firstAttribute="top" secondItem="E6U-Zq-Z9v" secondAttribute="bottom" constant="5" id="9vl-IH-Gvf"/>
+                            <constraint firstItem="E6U-Zq-Z9v" firstAttribute="leading" secondItem="BVH-bS-BbH" secondAttribute="leading" constant="5" id="NAo-P6-LEu"/>
+                            <constraint firstItem="E6U-Zq-Z9v" firstAttribute="top" secondItem="noz-4h-IgA" secondAttribute="bottom" constant="5" id="zbK-gy-Ln6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved Cities" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="xrf-Iw-dXe">
@@ -85,12 +90,29 @@
         <scene sceneID="eYC-zu-Ncb">
             <objects>
                 <viewController storyboardIdentifier="AddNewCityViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wlZ-qa-qGX" customClass="AddNewCityViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ixf-3E-Mx4"/>
+                        <viewControllerLayoutGuide type="bottom" id="g7P-Fo-GcA"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mCf-PT-iB5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="WLz-q4-bfa"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="o2i-lM-ues">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="o2i-lM-ues" firstAttribute="top" secondItem="mCf-PT-iB5" secondAttribute="top" id="KUB-ed-bsZ"/>
+                            <constraint firstAttribute="bottom" secondItem="o2i-lM-ues" secondAttribute="bottom" id="Lxi-gx-fCB"/>
+                            <constraint firstItem="o2i-lM-ues" firstAttribute="leading" secondItem="mCf-PT-iB5" secondAttribute="leading" id="Zhn-si-Lha"/>
+                            <constraint firstAttribute="trailing" secondItem="o2i-lM-ues" secondAttribute="trailing" id="iv6-Rv-MIs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="o2i-lM-ues" id="Ima-4Y-Gjv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNF-w1-7Je" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,16 +122,63 @@
         <scene sceneID="2qp-FT-T2b">
             <objects>
                 <viewController storyboardIdentifier="CityWeatherDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UZR-RD-HnY" customClass="CityWeatherDetailsViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lde-D9-eYw"/>
+                        <viewControllerLayoutGuide type="bottom" id="YLp-y5-ZvK"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rs7-f6-u42">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ura-un-k7Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ua0-zz-qkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1332" y="-73"/>
+        </scene>
+        <!--City Search Table-->
+        <scene sceneID="VQy-uX-F94">
+            <objects>
+                <tableViewController storyboardIdentifier="CitySearchTable" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bhW-qf-Bea" customClass="CitySearchTable" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VAM-kW-KcF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchedCityName" textLabel="y5U-PY-cPL" detailTextLabel="njO-Gp-j0U" style="IBUITableViewCellStyleSubtitle" id="CrW-Du-NOJ">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CrW-Du-NOJ" id="RUI-Ag-6v4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y5U-PY-cPL">
+                                            <rect key="frame" x="20" y="6" width="25" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="njO-Gp-j0U">
+                                            <rect key="frame" x="20" y="22.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bhW-qf-Bea" id="uEu-OE-KLm"/>
+                            <outlet property="delegate" destination="bhW-qf-Bea" id="7dh-Lq-34U"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NMZ-f4-5U9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-293" y="-1315"/>
         </scene>
     </scenes>
     <resources>
