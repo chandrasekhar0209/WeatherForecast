@@ -20,17 +20,17 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Weather App requires your location to fetch latest Weather Forecast Details</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Weather App requires your location to fetch latest Weather Forecast Details</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Weather App requires your location to fetch latest Weather Forecast Details</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Weather App requires your location to fetch latest Weather Forecast Details</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Weather App requires your location to fetch latest Weather Forecast Details</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Weather App requires your location to fetch latest Weather Forecast Details</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -77,5 +77,7 @@
 	<string>http://api.openweathermap.org</string>
 	<key>appId</key>
 	<string>fae7190d7e6433ec3a45285ffcf55c86</string>
+	<key>iconUrl</key>
+	<string>http://openweathermap.org/img/wn/</string>
 </dict>
 </plist>

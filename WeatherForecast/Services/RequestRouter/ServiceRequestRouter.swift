@@ -20,7 +20,6 @@ protocol ServiceRequestRouter {
 extension ServiceRequestRouter {
     public func asURLRequest() throws -> URLRequest {
         let url = try asURL()
-        print(url)
         let urlRequest = NSMutableURLRequest(url: url)
         urlRequest.httpMethod = methodType.rawValue
 
@@ -47,7 +46,8 @@ extension ServiceRequestRouter {
         var urlComponents = URLComponents(string:fullUrl)
         if let value = try? ServiceDetails.fetch().appId {
             urlComponents?.queryItems = [
-                URLQueryItem(name: "appid", value: value)
+                URLQueryItem(name: "appid", value: value),
+                URLQueryItem(name: "units", value: "metric")
             ]
         }
         for (key, value) in queryItems {

@@ -66,6 +66,12 @@
                 <constraint firstItem="ZJk-yH-EHO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rhq-BD-Wwi"/>
                 <constraint firstItem="DeI-b6-aqe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="v1N-B1-Xej"/>
             </constraints>
+            <connections>
+                <outlet property="humidityLabel" destination="oaz-Qw-Ev6" id="0nT-az-J42"/>
+                <outlet property="temperatureLabel" destination="Z62-v0-K4i" id="Shi-op-hRZ"/>
+                <outlet property="timeLabel" destination="DeI-b6-aqe" id="6tL-JT-gk8"/>
+                <outlet property="weatherIcon" destination="ZJk-yH-EHO" id="qEJ-qo-Wd3"/>
+            </connections>
             <point key="canvasLocation" x="15.942028985507248" y="41.517857142857139"/>
         </collectionViewCell>
     </objects>

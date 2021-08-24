@@ -11,14 +11,16 @@ class WeatherCollectionView: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     static let identifier = "WeatherCollectionView"
     static let nibName = "WeatherCollectionView"
-
-    func configureCell() {
+    var weatherForecastList = [TodayForecastModel]()
+    func configureCell(with list: [TodayForecastModel]) {
+        setLayout()
+        weatherForecastList = list
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.layer.borderColor = UIColor.white.cgColor
         collectionView.layer.borderWidth = 0.5
         collectionView.register(UINib(nibName: WeatherCell.nibName, bundle: nil), forCellWithReuseIdentifier: WeatherCell.identifier)
-        setLayout()
+        collectionView.reloadData()
     }
 }
 
@@ -40,7 +42,7 @@ extension WeatherCollectionView: UICollectionViewDelegate {
 
 extension WeatherCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return weatherForecastList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -48,6 +50,7 @@ extension WeatherCollectionView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+        cell.configureCell(with: weatherForecastList[indexPath.row])
         cell.backgroundColor = .clear
         return cell
     }

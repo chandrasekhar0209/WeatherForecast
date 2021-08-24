@@ -43,6 +43,7 @@ class BookmarksViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        ActivityIndicator.shared.startAnimating(on: self.view)
         fetchBookmarks()
     }
 }
@@ -57,7 +58,6 @@ private extension BookmarksViewController {
     func configureController() {
         bookmarkTableView.delegate = self
         bookmarkTableView.dataSource = self
-        bookmarkTableView.separatorStyle = .none
         bookmarkTableView.register(UINib(nibName: BookmarkCell.nibName, bundle: nil), forCellReuseIdentifier: BookmarkCell.identifier)
     }
     
@@ -90,6 +90,7 @@ private extension BookmarksViewController {
         }
         view.isHidden = bookmarks.count > 0 ? true : false
         bookmarkTableView.isHidden = !view.isHidden
+        ActivityIndicator.shared.stopAnimating(on: self.view)
         reloadData()
     }
     
@@ -104,11 +105,16 @@ extension BookmarksViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let _ = bookmarks[indexPath.row]
+        let model = bookmarks[indexPath.row]
         let cityDetails: StoryboardProtocol = CityWeatherDetailsViewController()
-        guard let viewController = cityDetails.instantiateControllerFromStoryboard() as? CityWeatherDetailsViewController else {
+        guard let cityName = model.value(forKey: BookmarkEntityKeys.cityName.rawValue) as? String,
+              let latitude = model.value(forKey: BookmarkEntityKeys.latitude.rawValue) as? Double,
+              let longitude = model.value(forKey: BookmarkEntityKeys.longitude.rawValue) as? Double,
+              let viewController = cityDetails.instantiateControllerFromStoryboard() as? CityWeatherDetailsViewController else {
             return
         }
+        let bookMarkModel = BookmarkModel(cityName: cityName, latitude: latitude, longitude: longitude)
+        viewController.bookmarkModel = bookMarkModel
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -134,6 +140,7 @@ extension BookmarksViewController: UITableViewDataSource {
         }
         
         cell.configureCell(with: bookmarkModel)
+        cell.selectionStyle = .none
         return cell
     }
 }

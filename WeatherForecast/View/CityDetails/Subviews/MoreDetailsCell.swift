@@ -10,16 +10,15 @@ import UIKit
 class MoreDetailsCell: UITableViewCell {
     static let identifier = "MoreDetailsCell"
     static let nibName = "MoreDetailsCell"
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var moreLabel1: UILabel!
+    @IBOutlet weak var moreLabel2: UILabel!
+    @IBOutlet weak var moreLabel3: UILabel!
+    @IBOutlet weak var moreLabel4: UILabel!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureCell(text1: String?, text2: String?, text3: String?, text4: String?) {
+        moreLabel1.text = text1
+        moreLabel2.text = text2
+        moreLabel3.text = text3
+        moreLabel4.text = text4
     }
-    
 }

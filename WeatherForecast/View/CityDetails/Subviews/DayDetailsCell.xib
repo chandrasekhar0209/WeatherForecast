@@ -74,6 +74,13 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="dayLabel" destination="EDt-a8-kIK" id="g1e-cw-h2R"/>
+                <outlet property="humidityLabel" destination="2tR-4Y-zy3" id="7n2-8w-Sj1"/>
+                <outlet property="maxTemperature" destination="Dgn-ma-SZB" id="Ko7-wR-dFe"/>
+                <outlet property="minTemperature" destination="y51-s0-UHq" id="9Fc-v3-Aa2"/>
+                <outlet property="weatherIconImage" destination="YZU-NG-1SF" id="F8o-7Y-7ad"/>
+            </connections>
             <point key="canvasLocation" x="17" y="42"/>
         </tableViewCell>
     </objects>

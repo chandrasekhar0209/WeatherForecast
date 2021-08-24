@@ -70,6 +70,12 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="moreLabel1" destination="HxX-Zs-lXs" id="Y3b-vl-PjH"/>
+                <outlet property="moreLabel2" destination="g9N-u8-4Cs" id="ngq-eG-qVH"/>
+                <outlet property="moreLabel3" destination="wXs-ME-HrD" id="1kJ-75-f72"/>
+                <outlet property="moreLabel4" destination="TD9-qo-DLH" id="vNy-1p-H0I"/>
+            </connections>
             <point key="canvasLocation" x="17" y="42"/>
         </tableViewCell>
     </objects>

@@ -10,6 +10,7 @@ import Foundation
 struct ServiceDetails: Codable {
     var baseUrl: String
     var appId: String
+    var iconUrl: String
 
     static func fetch() throws -> Self {
         let plistName = "Info"

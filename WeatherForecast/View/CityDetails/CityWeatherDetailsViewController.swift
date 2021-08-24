@@ -11,6 +11,10 @@ class CityWeatherDetailsViewController: UIViewController {
     var cityDetailsViewModel: CityDetailsProtocol
     @IBOutlet weak var todayWeatherView: UIView!
     @IBOutlet weak var weatherDetailsTable: UITableView!
+    var todayForecast: TodayForecastModel!
+    var weatherForecastList = [TodayForecastModel]()
+    var dayWeatherList = [TodayForecastModel]()
+    var bookmarkModel: BookmarkModel!
 
     lazy var weatherView: TodayWeatherView? = {
         guard let weatherView = UINib(nibName: TodayWeatherView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? TodayWeatherView else {
@@ -22,6 +26,7 @@ class CityWeatherDetailsViewController: UIViewController {
         weatherView.topAnchor.constraint(equalTo: todayWeatherView.topAnchor).isActive = true
         weatherView.bottomAnchor.constraint(equalTo: todayWeatherView.bottomAnchor).isActive = true
         weatherView.translatesAutoresizingMaskIntoConstraints = false
+        weatherView.configureView(with: todayForecast)
         
         return weatherView
     }()
@@ -41,13 +46,23 @@ class CityWeatherDetailsViewController: UIViewController {
         
         configureUI()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ActivityIndicator.shared.startAnimating(on: self.view)
+        fetchTodayForecast(router: .todayForecast(bookmarkModel.latitude, bookmarkModel.longitude))
+        fetchFiveDayForecast(router: .fiveDayForecast(bookmarkModel.latitude, bookmarkModel.longitude))
+    }
 }
 
-extension CityWeatherDetailsViewController {
+private extension CityWeatherDetailsViewController {
     func configureUI() {
-        weatherView?.isHidden = false
         weatherDetailsTable.delegate = self
         weatherDetailsTable.dataSource = self
+        registerCells()
+    }
+    
+    func registerCells() {
         weatherDetailsTable.register(UINib(nibName: WeatherCollectionView.nibName, bundle: nil), forCellReuseIdentifier: WeatherCollectionView.identifier)
         weatherDetailsTable.register(UINib(nibName: DayWeatherDetailsView.nibName, bundle: nil), forCellReuseIdentifier: DayWeatherDetailsView.identifier)
         weatherDetailsTable.register(UINib(nibName: MoreDetailsView.nibName, bundle: nil), forCellReuseIdentifier: MoreDetailsView.identifier)
@@ -56,14 +71,17 @@ extension CityWeatherDetailsViewController {
 
 extension CityWeatherDetailsViewController {
     func fetchTodayForecast(router: ForecastRouter)  {
-        cityDetailsViewModel.fetchCityForecast(router: router, codable: TodayForecastModel.self) { result in
+        cityDetailsViewModel.fetchCityForecast(router: router, codable: TodayForecastModel.self) {[weak self] result in
             switch result {
             case .success(let model):
                 guard let todayForecastModel = model as? TodayForecastModel else {
                     return
                 }
                 
-                print(todayForecastModel.cityName ?? "")
+                self?.todayForecast = todayForecastModel
+                DispatchQueue.main.async {
+                    self?.weatherView?.isHidden = false
+                }
             case .failure(let error):
                 print(error?.localizedDescription ?? "")
             }
@@ -71,14 +89,30 @@ extension CityWeatherDetailsViewController {
     }
     
     func fetchFiveDayForecast(router: ForecastRouter) {
-        cityDetailsViewModel.fetchCityForecast(router: router, codable: FiveDayForecastModel.self) { result in
+        cityDetailsViewModel.fetchCityForecast(router: router, codable: FiveDayForecastModel.self) {[weak self] result in
             switch result {
             case .success(let model):
-                guard let todayForecastModel = model as? FiveDayForecastModel else {
+                guard let fiveDayForecastModel = model as? FiveDayForecastModel,
+                      let list = fiveDayForecastModel.list else {
                     return
                 }
                 
-                print(todayForecastModel.city?.name ?? "")
+                self?.weatherForecastList = list
+                self?.dayWeatherList = list.filterDuplicates { a, b in
+                    if let aWeatherList = a.weather,
+                       let aWeather = aWeatherList.first,
+                       let bWeatherList = b.weather,
+                       let bWeather = bWeatherList.first {
+                        return aWeather.id != bWeather.id
+                    }
+                    
+                    return a.cityName != b.cityName
+                }
+
+                DispatchQueue.main.async {
+                    self?.weatherDetailsTable.reloadData()
+                    ActivityIndicator.shared.stopAnimating(on: (self?.view)!)
+                }
             case .failure(let error):
                 print(error?.localizedDescription ?? "")
             }
@@ -91,8 +125,10 @@ extension CityWeatherDetailsViewController: UITableViewDelegate {
         switch indexPath.row {
         case 0:
             return 135.0
+        case 1:
+            return (CGFloat(dayWeatherList.count) * 60.0)/1.7
         default:
-            return 200.0
+            return 270.0
         }
     }
 }
@@ -109,7 +145,7 @@ extension CityWeatherDetailsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.configureCell()
+            cell.configureCell(with: weatherForecastList)
             
             return cell
             
@@ -118,7 +154,7 @@ extension CityWeatherDetailsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.configureCell()
+            cell.configureCell(with: dayWeatherList)
             
             return cell
 
@@ -127,7 +163,7 @@ extension CityWeatherDetailsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.configureCell()
+            cell.configureCell(with: todayForecast)
             
             return cell
         }

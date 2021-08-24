@@ -128,6 +128,8 @@ extension AddNewCityViewController : CLLocationManagerDelegate {
         annotation.coordinate = location.coordinate
         mapView.addAnnotation(annotation)
         coordinate = location.coordinate
+        print(location.coordinate.latitude)
+        print(location.coordinate.longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
