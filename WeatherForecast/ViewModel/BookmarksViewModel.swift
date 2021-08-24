@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import CoreData
 
 protocol BookmarksSaveProtocol {
     func saveBookMark(with data: BookmarkModel, completion: (StorageResult<String, Error>) -> Void)
 }
 
 protocol BookmarksFetchProtocol {
-    func fetchAllSavedBookmarks(completion: (StorageResult<[BookmarkModel], Error>) -> Void)
+    func fetchAllSavedBookmarks(completion: (StorageResult<ManagedObjects, Error>) -> Void)
+    func deleteBookMark(_ data: NSManagedObject, completion: (StorageResult<String, Error>) -> Void)
 }
 
 class BookMarksViewModel {
@@ -36,24 +38,15 @@ extension BookMarksViewModel: BookmarksSaveProtocol {
 }
 
 extension BookMarksViewModel: BookmarksFetchProtocol {
-    func fetchAllSavedBookmarks(completion: (StorageResult<[BookmarkModel], Error>) -> Void) {
+    func fetchAllSavedBookmarks(completion: (StorageResult<ManagedObjects, Error>) -> Void) {
         storageManager.fetchRecords(forEntity: .bookmarks) { result in
-            switch result {
-            case .success(let managedObjects):
-                var bookmarkObjects = [BookmarkModel]()
-                managedObjects.forEach { managedObject in
-                    if let city = managedObject.value(forKey: BookmarkEntityKeys.cityName.rawValue) as? String,
-                       let latitude = managedObject.value(forKey: BookmarkEntityKeys.latitude.rawValue) as? Double,
-                       let longitude = managedObject.value(forKey: BookmarkEntityKeys.longitude.rawValue) as? Double {
-                        let bookmarkModel = BookmarkModel(cityName: city, latitude: latitude, longitude: longitude)
-                        bookmarkObjects.append(bookmarkModel)
-                    }
-                }
-                
-                completion(.success(bookmarkObjects))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result)
+        }
+    }
+    
+    func deleteBookMark(_ data: NSManagedObject, completion: (StorageResult<String, Error>) -> Void) {
+        storageManager.deleteRecord(model: data) { result in
+            completion(result)
         }
     }
 }

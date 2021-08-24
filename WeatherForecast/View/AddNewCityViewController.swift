@@ -76,7 +76,7 @@ private extension AddNewCityViewController {
         searchBar.placeholder = "Search for places"
         navigationItem.searchController = citySearchController
         citySearchController?.hidesNavigationBarDuringPresentation = false
-        citySearchController?.dimsBackgroundDuringPresentation = true
+        citySearchController?.obscuresBackgroundDuringPresentation = true
         definesPresentationContext = true
     }
 }

@@ -36,9 +36,9 @@ extension CityWeatherDetailsViewController {
                     return
                 }
                 
-                print(todayForecastModel.cityName)
+                print(todayForecastModel.cityName ?? "")
             case .failure(let error):
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "")
             }
         }
     }
@@ -51,9 +51,9 @@ extension CityWeatherDetailsViewController {
                     return
                 }
                 
-                print(todayForecastModel.city?.name)
+                print(todayForecastModel.city?.name ?? "")
             case .failure(let error):
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "")
             }
         }
     }

@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import CoreData
 
 class BookmarkCell: UITableViewCell {
     @IBOutlet weak var bookMarkTitle: UILabel!
     static let identifier = "BookmarkCell"
     static let nibName = "BookmarkCell"
-    func configureCell(with data: BookmarkModel) {
-        bookMarkTitle.text = data.cityName
+    func configureCell(with data: NSManagedObject) {
+        guard let cityName = data.value(forKey: BookmarkEntityKeys.cityName.rawValue) as? String else {
+            return
+        }
+        bookMarkTitle.text = cityName
     }
 }

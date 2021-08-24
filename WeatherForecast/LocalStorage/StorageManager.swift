@@ -12,7 +12,9 @@ protocol StorageManagerProtocol {
                     with data: [String: Any],
                     completion: (StorageResult<String, Error>) -> Void)
     func fetchRecords(forEntity: EntityName,
-                      completion: (StorageResult<[NSManagedObject], Error>) -> Void)
+                      completion: (StorageResult<ManagedObjects, Error>) -> Void)
+    func deleteRecord(model: NSManagedObject,
+                      completion: (StorageResult<String, Error>) -> Void)
 }
 
 class StorageManager {
@@ -48,7 +50,7 @@ extension StorageManager: StorageManagerProtocol {
     }
     
     func fetchRecords(forEntity: EntityName,
-                      completion: (StorageResult<[NSManagedObject], Error>) -> Void) {
+                      completion: (StorageResult<ManagedObjects, Error>) -> Void) {
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: forEntity.rawValue)
         request.returnsObjectsAsFaults = false
@@ -63,6 +65,18 @@ extension StorageManager: StorageManagerProtocol {
             completion(.failure(error))
         }
     }
+    
+    func deleteRecord(model: NSManagedObject,
+                      completion: (StorageResult<String, Error>) -> Void) {
+        let context = persistentContainer.viewContext
+        context.delete(model)
+        do {
+            try context.save()
+            completion(.success(Success.message.rawValue))
+        } catch {
+            completion(.failure(error))
+        }
+    }
 }
 
 enum StorageResult<S, E> {
@@ -73,3 +87,5 @@ enum StorageResult<S, E> {
 private enum Success: String {
     case message = "Saved Successfully"
 }
+
+public typealias ManagedObjects = [NSManagedObject]

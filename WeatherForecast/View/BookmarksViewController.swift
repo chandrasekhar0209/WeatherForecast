@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
 class BookmarksViewController: UIViewController {
     @IBOutlet weak var bookmarkTableView: UITableView!
     var bookmarkViewModel: BookmarksFetchProtocol
-    var bookmarks = [BookmarkModel]()
+    var bookmarks = [NSManagedObject]()
     lazy var errorView: ErrorView? = {
         guard let errorView = UINib(nibName: ErrorView.nibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? ErrorView else {
             return nil
@@ -72,6 +73,17 @@ private extension BookmarksViewController {
         }
     }
     
+    func deleteBookmark(_ bookmark: NSManagedObject) {
+        bookmarkViewModel.deleteBookMark(bookmark) { result in
+            switch result {
+            case .success(_):
+                fetchBookmarks()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func processNextStep() {
         guard let view = errorView else {
             return
@@ -92,15 +104,15 @@ extension BookmarksViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let bookmarkModel = bookmarks[indexPath.row]
-        print(bookmarkModel.cityName)
+        let _ = bookmarks[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let bookmarkObject = bookmarks[indexPath.row]
             bookmarks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            processNextStep()
+            deleteBookmark(bookmarkObject)
         }
     }
 }
