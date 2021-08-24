@@ -43,6 +43,7 @@
 		C52E833126D3816E005CEE5D /* FiveDayForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E833026D3816E005CEE5D /* FiveDayForecastModel.swift */; };
 		C52E833326D39FEB005CEE5D /* CitySearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E833226D39FEB005CEE5D /* CitySearchTable.swift */; };
 		C52E833826D49464005CEE5D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E833726D49464005CEE5D /* UIView+Extensions.swift */; };
+		C52E834026D50E61005CEE5D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E833F26D50E61005CEE5D /* HelpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		C52E833026D3816E005CEE5D /* FiveDayForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayForecastModel.swift; sourceTree = "<group>"; };
 		C52E833226D39FEB005CEE5D /* CitySearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchTable.swift; sourceTree = "<group>"; };
 		C52E833726D49464005CEE5D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		C52E833F26D50E61005CEE5D /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				C52E831926D259A8005CEE5D /* AddNewCityViewController.swift */,
 				C52E832A26D2E944005CEE5D /* CityWeatherDetailsViewController.swift */,
 				C52E833226D39FEB005CEE5D /* CitySearchTable.swift */,
+				C52E833F26D50E61005CEE5D /* HelpViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				C52E82FD26D035CD005CEE5D /* CoordinatorProtocol.swift in Sources */,
 				C52E832B26D2E944005CEE5D /* CityWeatherDetailsViewController.swift in Sources */,
 				C52E833126D3816E005CEE5D /* FiveDayForecastModel.swift in Sources */,
+				C52E834026D50E61005CEE5D /* HelpViewController.swift in Sources */,
 				C52E832D26D2E9FB005CEE5D /* CityDetailsViewModel.swift in Sources */,
 				C52E830C26D13E17005CEE5D /* EntityDetails.swift in Sources */,
 				C52E82F426D027E8005CEE5D /* WeatherTabController.swift in Sources */,

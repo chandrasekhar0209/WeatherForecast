@@ -10,7 +10,7 @@
         <!--Help-->
         <scene sceneID="keR-lC-92F">
             <objects>
-                <viewController id="lmY-85-Hzx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lmY-85-Hzx" customClass="HelpViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O4M-xc-Ykz"/>
                         <viewControllerLayoutGuide type="bottom" id="YT4-5M-e2E"/>
