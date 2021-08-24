@@ -15,6 +15,13 @@ class WeatherTabController: UITabBarController {
 
 extension WeatherTabController {
     @objc func leftButtonAction(sender: UIBarButtonItem) {
+        let addNewCity: StoryboardProtocol = CityWeatherDetailsViewController()
+        guard let addNewCityViewController = addNewCity.instantiateControllerFromStoryboard() else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(addNewCityViewController, animated: true)
+        return
         guard let tabControllers = self.viewControllers else {
             return
         }

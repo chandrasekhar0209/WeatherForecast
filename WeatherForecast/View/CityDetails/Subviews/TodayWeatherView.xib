@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TodayWeatherView" customModule="WeatherForecast" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="180"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="e5j-C3-V9i">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="180"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secunderabad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXo-eT-4C9">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="SAR-Xp-8Ck"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="30"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thunderstorm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fh4-ul-IiV">
+                            <rect key="frame" x="0.0" y="39" width="400" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="29y-vZ-cC2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="21"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25*" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2o-in-Ffw">
+                            <rect key="frame" x="0.0" y="64" width="400" height="70"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="70" id="BeL-DY-ek8"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="80"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H:32*  L:22*" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cb-0O-Fcg">
+                            <rect key="frame" x="0.0" y="139" width="400" height="41"/>
+                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="21"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.21902179720000001" green="0.44980967039999997" blue="0.51765793559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="e5j-C3-V9i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8K8-CT-4YN"/>
+                <constraint firstAttribute="trailing" secondItem="e5j-C3-V9i" secondAttribute="trailing" id="WD7-rT-x8e"/>
+                <constraint firstItem="e5j-C3-V9i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="k52-Wb-kEo"/>
+                <constraint firstAttribute="bottom" secondItem="e5j-C3-V9i" secondAttribute="bottom" id="nGO-xI-85O"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cityMaxMinTemperature" destination="3cb-0O-Fcg" id="je9-ao-Iiq"/>
+                <outlet property="cityName" destination="vXo-eT-4C9" id="fIB-rW-KG7"/>
+                <outlet property="cityTemperature" destination="o2o-in-Ffw" id="y8q-Os-91q"/>
+                <outlet property="weatherType" destination="fh4-ul-IiV" id="0TJ-nV-bXR"/>
+            </connections>
+            <point key="canvasLocation" x="-88" y="42"/>
+        </view>
+    </objects>
+</document>

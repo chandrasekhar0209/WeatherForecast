@@ -105,6 +105,11 @@ extension BookmarksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let _ = bookmarks[indexPath.row]
+        let cityDetails: StoryboardProtocol = CityWeatherDetailsViewController()
+        guard let viewController = cityDetails.instantiateControllerFromStoryboard() as? CityWeatherDetailsViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

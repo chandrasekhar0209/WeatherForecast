@@ -12,8 +12,8 @@
             <objects>
                 <viewController storyboardIdentifier="HelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lmY-85-Hzx" customClass="HelpViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="O4M-xc-Ykz"/>
-                        <viewControllerLayoutGuide type="bottom" id="YT4-5M-e2E"/>
+                        <viewControllerLayoutGuide type="top" id="xdk-Gw-0Xl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xoe-9Y-RY6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5MJ-Pg-xox">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -33,8 +33,8 @@
             <objects>
                 <viewController storyboardIdentifier="BookmarksViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3ER-4Y-Vjc" customClass="BookmarksViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="noz-4h-IgA"/>
-                        <viewControllerLayoutGuide type="bottom" id="XGj-54-DUG"/>
+                        <viewControllerLayoutGuide type="top" id="o49-E1-PA3"/>
+                        <viewControllerLayoutGuide type="bottom" id="20W-04-ajr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BVH-bS-BbH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -52,9 +52,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="E6U-Zq-Z9v" secondAttribute="trailing" constant="5" id="32n-1N-aPo"/>
-                            <constraint firstItem="XGj-54-DUG" firstAttribute="top" secondItem="E6U-Zq-Z9v" secondAttribute="bottom" constant="5" id="9vl-IH-Gvf"/>
+                            <constraint firstItem="20W-04-ajr" firstAttribute="top" secondItem="E6U-Zq-Z9v" secondAttribute="bottom" constant="5" id="9vl-IH-Gvf"/>
                             <constraint firstItem="E6U-Zq-Z9v" firstAttribute="leading" secondItem="BVH-bS-BbH" secondAttribute="leading" constant="5" id="NAo-P6-LEu"/>
-                            <constraint firstItem="E6U-Zq-Z9v" firstAttribute="top" secondItem="noz-4h-IgA" secondAttribute="bottom" constant="5" id="zbK-gy-Ln6"/>
+                            <constraint firstItem="E6U-Zq-Z9v" firstAttribute="top" secondItem="o49-E1-PA3" secondAttribute="bottom" constant="5" id="zbK-gy-Ln6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved Cities" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="xrf-Iw-dXe">
@@ -91,8 +91,8 @@
             <objects>
                 <viewController storyboardIdentifier="AddNewCityViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wlZ-qa-qGX" customClass="AddNewCityViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ixf-3E-Mx4"/>
-                        <viewControllerLayoutGuide type="bottom" id="g7P-Fo-GcA"/>
+                        <viewControllerLayoutGuide type="top" id="E6Z-51-X19"/>
+                        <viewControllerLayoutGuide type="bottom" id="N8P-cH-2w8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mCf-PT-iB5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -123,14 +123,41 @@
             <objects>
                 <viewController storyboardIdentifier="CityWeatherDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UZR-RD-HnY" customClass="CityWeatherDetailsViewController" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Lde-D9-eYw"/>
-                        <viewControllerLayoutGuide type="bottom" id="YLp-y5-ZvK"/>
+                        <viewControllerLayoutGuide type="top" id="9dj-7W-yCF"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xqs-Tz-9SS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rs7-f6-u42">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaM-GP-5aB">
+                                <rect key="frame" x="20" y="74" width="374" height="180"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="ghn-Oy-lH4"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4dK-eZ-yXp">
+                                <rect key="frame" x="-2" y="289" width="418" height="573"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21902179720000001" green="0.44980967039999997" blue="0.51765793559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="MaM-GP-5aB" secondAttribute="trailing" id="S7u-hZ-DaY"/>
+                            <constraint firstItem="4dK-eZ-yXp" firstAttribute="leading" secondItem="rs7-f6-u42" secondAttribute="leadingMargin" constant="-22" id="ToV-rw-VEP"/>
+                            <constraint firstItem="4dK-eZ-yXp" firstAttribute="top" secondItem="MaM-GP-5aB" secondAttribute="bottom" constant="35" id="VlG-xz-mtT"/>
+                            <constraint firstItem="Xqs-Tz-9SS" firstAttribute="top" secondItem="4dK-eZ-yXp" secondAttribute="bottom" id="aNS-09-rK0"/>
+                            <constraint firstItem="MaM-GP-5aB" firstAttribute="leading" secondItem="rs7-f6-u42" secondAttribute="leadingMargin" id="hB9-Lp-NIy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4dK-eZ-yXp" secondAttribute="trailing" constant="-22" id="nUU-Z2-eeF"/>
+                            <constraint firstItem="MaM-GP-5aB" firstAttribute="top" secondItem="9dj-7W-yCF" secondAttribute="bottom" constant="30" id="y9y-Il-az4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="todayWeatherView" destination="MaM-GP-5aB" id="2ZX-8i-GVx"/>
+                        <outlet property="weatherDetailsTable" destination="4dK-eZ-yXp" id="e09-Bi-oZI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ua0-zz-qkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
