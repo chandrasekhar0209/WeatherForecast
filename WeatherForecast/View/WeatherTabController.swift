@@ -38,7 +38,7 @@ extension WeatherTabController: StoryboardProtocol {
     }
     
     func instantiateControllerFromStoryboard() -> UIViewController? {
-        guard let viewController = initialiseStoryboard().instantiateViewController(identifier: "WeatherTabController") as? WeatherTabController else {
+        guard let viewController = initialiseStoryboard().instantiateViewController(identifier: String.getClassName(from: WeatherTabController.self)) as? WeatherTabController else {
             return nil
         }
         

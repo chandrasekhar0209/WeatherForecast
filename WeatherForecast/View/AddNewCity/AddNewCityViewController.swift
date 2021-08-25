@@ -56,7 +56,8 @@ private extension AddNewCityViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
-        locationManager.requestLocation()
+        locationManager.stopUpdatingLocation()
+        locationManager.startUpdatingLocation()
     }
     
     func configureCitySearchTable() {
@@ -79,6 +80,26 @@ private extension AddNewCityViewController {
         citySearchController?.hidesNavigationBarDuringPresentation = false
         citySearchController?.obscuresBackgroundDuringPresentation = true
         definesPresentationContext = true
+    }
+    
+    func setMapRegion<M: CLPlacemark>(placemark: M) {
+        if let location = placemark.location?.coordinate {
+            coordinate = location
+            selectedCity = placemark.locality
+            mapView.removeAnnotations(mapView.annotations)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = placemark.name
+            if let state = placemark.administrativeArea,
+               let country = placemark.country {
+                annotation.subtitle = "\(state) \(country)"
+            }
+            mapView.addAnnotation(annotation)
+            
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: location, span: span)
+            mapView.setRegion(region, animated: true)
+        }
     }
 }
 
@@ -104,9 +125,11 @@ extension AddNewCityViewController : CLLocationManagerDelegate {
         switch status {
         case .authorizedWhenInUse:
             locationManager.requestLocation()
+            locationManager.stopUpdatingLocation()
 
         case .authorizedAlways:
             locationManager.requestLocation()
+            locationManager.stopUpdatingLocation()
 
         default:
             print("Location")
@@ -119,25 +142,13 @@ extension AddNewCityViewController : CLLocationManagerDelegate {
             return
         }
 
-        mapView.removeAnnotations(mapView.annotations)
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location) {[weak self] placemarks, error in
-            if let placemarks = placemarks, let placemark = placemarks.first {
-                self?.selectedCity = placemark.locality
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = location.coordinate
-                annotation.title = placemark.name
-                if let state = placemark.administrativeArea,
-                let country = placemark.country {
-                    annotation.subtitle = "\(state) \(country)"
-                }
-                self?.mapView.addAnnotation(annotation)
+            if let placemarks = placemarks,
+               let placemark = placemarks.first {
+                self?.setMapRegion(placemark: placemark)
             }
         }
-        coordinate = location.coordinate
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: location.coordinate, span: span)
-        mapView.setRegion(region, animated: true)
     }
 
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -146,21 +157,8 @@ extension AddNewCityViewController : CLLocationManagerDelegate {
 }
 
 extension AddNewCityViewController: HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark){
-        coordinate = placemark.coordinate
-        selectedCity = placemark.locality
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
-        if let state = placemark.administrativeArea,
-        let country = placemark.country {
-            annotation.subtitle = "\(state) \(country)"
-        }
-        mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
-        mapView.setRegion(region, animated: true)
+    func dropPinZoomIn(placemark: MKPlacemark){
+        setMapRegion(placemark: placemark)
     }
 }
 

@@ -22,7 +22,7 @@ class WeatherTabCoordinator: CoordinatorProtocol {
                                                  action: #selector(weatherTabController.rightButtonAction(sender:)))
 
         let navigationProperties = NavigationControllerProperties(rootController: weatherTabController,
-                                                                  title: "Saved Cities",
+                                                                  title: String.appName,
                                                                   leftBarItems: [leftBarButtonItem],
                                                                   rightBarItems: [rightBarButtonItem])
         window?.rootViewController = UINavigationController.withProperties(navigationProperties)

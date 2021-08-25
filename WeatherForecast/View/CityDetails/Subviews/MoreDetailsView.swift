@@ -8,86 +8,84 @@
 import UIKit
 
 class MoreDetailsView: UITableViewCell {
-    @IBOutlet weak var tableView: UITableView!
     static let identifier = "MoreDetailsView"
     static let nibName = "MoreDetailsView"
-    var todayForecast: TodayForecastModel!
-    func configureCell(with data: TodayForecastModel?) {
-        todayForecast = data
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.layer.borderColor = UIColor.white.cgColor
-        tableView.layer.borderWidth = 0.5
-        tableView.register(UINib(nibName: MoreDetailsCell.nibName, bundle: nil), forCellReuseIdentifier: MoreDetailsCell.identifier)
-        tableView.reloadData()
-    }
-}
-
-extension MoreDetailsView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return MoreDetailsCell.rowHeight
-    }
-}
-
-extension MoreDetailsView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todayForecast == nil ? 0 : 5
+    var tableController: GenericTableViewController<Int, MoreDetailsCell>!
+    let list = [1,2,3,4,5]
+    var todayForecast : TodayForecastModel! {
+        didSet {
+            tableController.updatesItems(items: list)
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MoreDetailsCell.identifier) as? MoreDetailsCell,
-              let sunrise = todayForecast.system?.sunrise,
-              let sunset = todayForecast.system?.sunset,
-              let humidity = todayForecast.main?.humidity,
-              let windSpeed = todayForecast.wind?.speed,
-              let feelsLike = todayForecast.main?.feelsLike,
-              let pressure = todayForecast.main?.pressure,
-              let visibility = todayForecast.visibility else {
-            return UITableViewCell()
-        }
-        
-        switch indexPath.row {
-        case 0:
-            cell.configureCell(text1: MoreDetailsViewConstants.sunrise.rawValue,
-                               text2: Date.sunRiseTimeFormat(timeStamp: sunrise),
-                               text3: MoreDetailsViewConstants.sunset.rawValue,
-                               text4: Date.sunRiseTimeFormat(timeStamp: sunset))
-            return cell
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        configureCell()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-        case 1:
-            cell.configureCell(text1: MoreDetailsViewConstants.chanceOfRain.rawValue,
-                               text2: "\(MoreDetailsViewConstants.zeroValue.rawValue)\(WeatherSymbols.percentage.rawValue)",
-                               text3: MoreDetailsViewConstants.humidity.rawValue,
-                               text4: "\(humidity)\(WeatherSymbols.percentage.rawValue)")
-            return cell
+    func configureCell() {
+        let tableProperties = TableProperties(rowHeight: MoreDetailsCell.rowHeight)
+        tableController = GenericTableViewController(items: [], tableProperties: tableProperties, configure: {[weak self] (cell: MoreDetailsCell, _, index) in
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            guard self?.todayForecast != nil,
+                  let sunrise = self?.todayForecast.system?.sunrise,
+                  let sunset = self?.todayForecast.system?.sunset,
+                  let humidity = self?.todayForecast.main?.humidity,
+                  let windSpeed = self?.todayForecast.wind?.speed,
+                  let feelsLike = self?.todayForecast.main?.feelsLike,
+                  let pressure = self?.todayForecast.main?.pressure,
+                  let visibility = self?.todayForecast.visibility else {
+                return
+            }
 
-        case 2:
-            cell.configureCell(text1: MoreDetailsViewConstants.wind.rawValue,
-                               text2: NSString(format:"%d kph",
-                                               Int(windSpeed)) as String,
-                               text3: MoreDetailsViewConstants.feelsLike.rawValue,
-                               text4: String.temparatureWithDegreeSymbol(value: "\(feelsLike)"))
-            return cell
+            switch index {
+            case 0:
+                cell.configureCell(text1: MoreDetailsViewConstants.sunrise.rawValue,
+                                   text2: Date.sunRiseTimeFormat(timeStamp: sunrise),
+                                   text3: MoreDetailsViewConstants.sunset.rawValue,
+                                   text4: Date.sunRiseTimeFormat(timeStamp: sunset))
+            case 1:
+                cell.configureCell(text1: MoreDetailsViewConstants.chanceOfRain.rawValue,
+                                   text2: "\(MoreDetailsViewConstants.zeroValue.rawValue)\(WeatherSymbols.percentage.rawValue)",
+                                   text3: MoreDetailsViewConstants.humidity.rawValue,
+                                   text4: "\(humidity)\(WeatherSymbols.percentage.rawValue)")
+            case 2:
+                cell.configureCell(text1: MoreDetailsViewConstants.wind.rawValue,
+                                   text2: NSString(format:"%d kph",
+                                                   Int(windSpeed)) as String,
+                                   text3: MoreDetailsViewConstants.feelsLike.rawValue,
+                                   text4: String.temparatureWithDegreeSymbol(value: "\(feelsLike)"))
+            case 3:
+                cell.configureCell(text1: MoreDetailsViewConstants.percipitation.rawValue,
+                                   text2: "\(MoreDetailsViewConstants.zeroValue.rawValue) cm",
+                                   text3: MoreDetailsViewConstants.pressure.rawValue,
+                                   text4: "\(pressure) hPa")
+            case 4:
+                cell.configureCell(text1: MoreDetailsViewConstants.visibility.rawValue,
+                                   text2: "\(visibility/1000) km",
+                                   text3: MoreDetailsViewConstants.uvIndex.rawValue,
+                                   text4: MoreDetailsViewConstants.zeroValue.rawValue)
+            default:
+                cell.configureCell(text1: nil, text2: nil, text3: nil, text4: nil)
+            }
 
-        case 3:
-            cell.configureCell(text1: MoreDetailsViewConstants.percipitation.rawValue,
-                               text2: "\(MoreDetailsViewConstants.zeroValue.rawValue) cm",
-                               text3: MoreDetailsViewConstants.pressure.rawValue,
-                               text4: "\(pressure) hPa")
-            return cell
-
-        case 4:
-            cell.configureCell(text1: MoreDetailsViewConstants.visibility.rawValue,
-                               text2: "\(visibility/1000) km",
-                               text3: MoreDetailsViewConstants.uvIndex.rawValue,
-                               text4: MoreDetailsViewConstants.zeroValue.rawValue)
-            return cell
-
-        default:
-            cell.configureCell(text1: nil, text2: nil, text3: nil, text4: nil)
-            return cell
-
-        }
+        }, selectHandler: { _ in }, editHandler: { _ in })
+        self.addSubview(tableController.tableView)
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+        UIView.setEdgesConstraints(for: tableController.tableView, with: self)
+        tableController.tableView.layer.borderColor = UIColor.white.cgColor
+        tableController.tableView.layer.borderWidth = 0.5
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        tableController.tableView.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
     }
 }
 

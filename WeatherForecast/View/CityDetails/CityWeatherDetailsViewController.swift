@@ -60,8 +60,8 @@ private extension CityWeatherDetailsViewController {
     
     func registerCells() {
         weatherDetailsTable.register(UINib(nibName: WeatherCollectionView.nibName, bundle: nil), forCellReuseIdentifier: WeatherCollectionView.identifier)
-        weatherDetailsTable.register(UINib(nibName: DayWeatherDetailsView.nibName, bundle: nil), forCellReuseIdentifier: DayWeatherDetailsView.identifier)
-        weatherDetailsTable.register(UINib(nibName: MoreDetailsView.nibName, bundle: nil), forCellReuseIdentifier: MoreDetailsView.identifier)
+        weatherDetailsTable.register(DayWeatherDetailsView.self, forCellReuseIdentifier: "\(DayWeatherDetailsView.self)")
+        weatherDetailsTable.register(MoreDetailsView.self, forCellReuseIdentifier: "\(MoreDetailsView.self)")
     }
 }
 
@@ -150,7 +150,7 @@ extension CityWeatherDetailsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.configureCell(with: dayWeatherList)
+            cell.weatherForecastList = dayWeatherList
             
             return cell
 
@@ -159,7 +159,7 @@ extension CityWeatherDetailsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.configureCell(with: todayForecast)
+            cell.todayForecast = todayForecast
             
             return cell
         }

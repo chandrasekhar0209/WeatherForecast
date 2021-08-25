@@ -8,37 +8,40 @@
 import UIKit
 
 class DayWeatherDetailsView: UITableViewCell {
-    @IBOutlet weak var tableView: UITableView!
     static let identifier = "DayWeatherDetailsView"
     static let nibName = "DayWeatherDetailsView"
-    var weatherForecastList = [TodayForecastModel]()
-    func configureCell(with list: [TodayForecastModel]) {
-        weatherForecastList = list
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: DayDetailsCell.nibName, bundle: nil), forCellReuseIdentifier: DayDetailsCell.identifier)
-        tableView.reloadData()
-    }
-}
-
-extension DayWeatherDetailsView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return DayDetailsCell.rowHeight
-    }
-}
-
-extension DayWeatherDetailsView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherForecastList.count
+    var tableController: GenericTableViewController<TodayForecastModel, DayDetailsCell>!
+    var weatherForecastList = [TodayForecastModel]() {
+        didSet {
+            tableController.updatesItems(items: weatherForecastList)
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DayDetailsCell.identifier) as? DayDetailsCell else {
-            return UITableViewCell()
-        }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        configureCell(with: weatherForecastList)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func configureCell(with list: [TodayForecastModel]) {
+        let tableProperties = TableProperties(rowHeight: DayDetailsCell.rowHeight)
+        tableController = GenericTableViewController(items: list, tableProperties: tableProperties) { (cell: DayDetailsCell, todayForecast, index)  in
+            cell.configureCell(with: todayForecast)
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+        } selectHandler: { _ in } editHandler: { _ in }
         
-        cell.configureCell(with: weatherForecastList[indexPath.row])
-        
-        return cell
+        self.addSubview(tableController.tableView)
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+        UIView.setEdgesConstraints(for: tableController.tableView, with: self)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        tableController.tableView.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
     }
 }

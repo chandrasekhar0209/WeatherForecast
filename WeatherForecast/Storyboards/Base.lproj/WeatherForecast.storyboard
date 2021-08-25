@@ -40,29 +40,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E6U-Zq-Z9v">
-                                <rect key="frame" x="5" y="49" width="404" height="759"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fsq-sj-yy3">
+                                <rect key="frame" x="20" y="44" width="374" height="769"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="3ER-4Y-Vjc" id="k34-ux-3oL"/>
-                                    <outlet property="delegate" destination="3ER-4Y-Vjc" id="ZsT-Ts-rjr"/>
-                                </connections>
-                            </tableView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.21902179720000001" green="0.44980967039999997" blue="0.51765793559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="E6U-Zq-Z9v" secondAttribute="trailing" constant="5" id="32n-1N-aPo"/>
-                            <constraint firstItem="20W-04-ajr" firstAttribute="top" secondItem="E6U-Zq-Z9v" secondAttribute="bottom" constant="5" id="9vl-IH-Gvf"/>
-                            <constraint firstItem="E6U-Zq-Z9v" firstAttribute="leading" secondItem="BVH-bS-BbH" secondAttribute="leading" constant="5" id="NAo-P6-LEu"/>
-                            <constraint firstItem="E6U-Zq-Z9v" firstAttribute="top" secondItem="o49-E1-PA3" secondAttribute="bottom" constant="5" id="zbK-gy-Ln6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fsq-sj-yy3" secondAttribute="trailing" id="14o-5o-ok9"/>
+                            <constraint firstItem="Fsq-sj-yy3" firstAttribute="leading" secondItem="BVH-bS-BbH" secondAttribute="leadingMargin" id="7ya-cf-O6F"/>
+                            <constraint firstItem="Fsq-sj-yy3" firstAttribute="top" secondItem="o49-E1-PA3" secondAttribute="bottom" id="KEf-r8-rIL"/>
+                            <constraint firstItem="20W-04-ajr" firstAttribute="top" secondItem="Fsq-sj-yy3" secondAttribute="bottom" id="r00-RK-ueU"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved Cities" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="xrf-Iw-dXe">
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="bookmarkTableView" destination="E6U-Zq-Z9v" id="NqG-yp-lb9"/>
+                        <outlet property="tableSubView" destination="Fsq-sj-yy3" id="V5K-pg-ZEt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwD-x7-wYt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -8,8 +8,8 @@
 import UIKit
 
 extension String {
-    static func getClassName<C: UIViewController>(from controller: C) -> String {
-        return String(describing: controller.self)
+    static func getClassName<C>(from controller: C) -> String {
+        return String(describing: controller)
     }
     
     static func temparatureWithDegreeSymbol(value: String) -> String? {
@@ -17,5 +17,9 @@ extension String {
             return nil
         }
         return NSString(format:"%d%@", Int(doubleValue), WeatherSymbols.degree.rawValue) as String
+    }
+    
+    static var appName: String {
+        return "Weather App"
     }
 }

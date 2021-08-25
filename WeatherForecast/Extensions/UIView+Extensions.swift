@@ -16,6 +16,10 @@ import UIKit
         }
     }
     
+    static func instantiateFromNib<T: UIView>() -> T? {
+        return UINib(nibName: "\(self)", bundle: nil).instantiate(withOwner: nil, options: nil).first as? T
+    }
+
     static func setEdgesConstraints(for childView: UIView, with parentView: UIView) {
         childView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
         childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
