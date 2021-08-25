@@ -10,6 +10,7 @@ import UIKit
 class DayDetailsCell: UITableViewCell {
     static let identifier = "DayDetailsCell"
     static let nibName = "DayDetailsCell"
+    static let rowHeight: CGFloat = 35.0
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weatherIconImage: UIImageView!
     @IBOutlet weak var humidityLabel: UILabel!
@@ -20,39 +21,29 @@ class DayDetailsCell: UITableViewCell {
         if let date = data.dateText {
             dayLabel.text = Date.dayFromDate(str: date)
         } else {
-            dayLabel.text = "--"
+            dayLabel.text = WeatherSymbols.noValue.rawValue
         }
         if let humidity = data.main?.humidity {
-            humidityLabel.text = "\(humidity)%"
+            humidityLabel.text = "\(humidity)\(WeatherSymbols.percentage.rawValue)"
         } else {
-            humidityLabel.text = "--"
+            humidityLabel.text = WeatherSymbols.noValue.rawValue
         }
         if let weatherList = data.weather,
            let weather = weatherList.first,
-           let iconUrl = try? ServiceDetails.fetch().iconUrl,
            let icon = weather.icon {
-            let imageUrl = "\(iconUrl)\(icon).png"
-            if let url = URL(string: imageUrl) {
-                do {
-                    let imageData = try Data.init(contentsOf: url)
-                    DispatchQueue.main.async {
-                        self.weatherIconImage.image = UIImage(data: imageData)
-                        self.weatherIconImage.isHidden = false
-                    }
-                } catch  {}
-            }
+            UIImageView.loadImage(in: weatherIconImage, with: icon)
         } else {
             weatherIconImage.isHidden = true
         }
         if let maxTemp = data.main?.maxTemperature {
-            maxTemperature.text = NSString(format:"%d%@", Int(maxTemp),"\u{00B0}") as String
+            maxTemperature.text = String.temparatureWithDegreeSymbol(value: "\(maxTemp)")
         } else {
-            maxTemperature.text = "--"
+            maxTemperature.text = WeatherSymbols.noValue.rawValue
         }
         if let minTemp = data.main?.minTemperature {
-            minTemperature.text = NSString(format:"%d%@", Int(minTemp),"\u{00B0}") as String
+            minTemperature.text = String.temparatureWithDegreeSymbol(value: "\(minTemp)")
         } else {
-            minTemperature.text = "--"
+            minTemperature.text = WeatherSymbols.noValue.rawValue
         }
     }
 }

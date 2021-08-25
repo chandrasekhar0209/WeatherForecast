@@ -15,7 +15,6 @@ class WeatherCollectionView: UITableViewCell {
     func configureCell(with list: [TodayForecastModel]) {
         setLayout()
         weatherForecastList = list
-        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.layer.borderColor = UIColor.white.cgColor
         collectionView.layer.borderWidth = 0.5
@@ -34,10 +33,6 @@ extension WeatherCollectionView {
         layout.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout
     }
-}
-
-extension WeatherCollectionView: UICollectionViewDelegate {
-    
 }
 
 extension WeatherCollectionView: UICollectionViewDataSource {

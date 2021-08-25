@@ -16,21 +16,30 @@ class TodayWeatherView: UIView {
     
     func configureView(with todayForecast: TodayForecastModel) {
         cityName.text = todayForecast.cityName
-        if let weatherList = todayForecast.weather, let weather = weatherList.first {
+        if let weatherList = todayForecast.weather,
+           let weather = weatherList.first {
             weatherType.text = weather.description
         } else {
-            weatherType.text = "--"
+            weatherType.text = WeatherSymbols.noValue.rawValue
         }
         if let temperature = todayForecast.main?.temperature {
-            cityTemperature.text = NSString(format:"%d%@", Int(temperature),"\u{00B0}") as String
+            cityTemperature.text = String.temparatureWithDegreeSymbol(value: "\(temperature)")
         } else {
-            cityTemperature.text = "--"
+            cityTemperature.text = WeatherSymbols.noValue.rawValue
         }
         if let maxTemperature = todayForecast.main?.maxTemperature,
-           let minTemperature = todayForecast.main?.minTemperature {
-            cityMaxMinTemperature.text = NSString(format:"H:%d%@  L:%d%@", Int(maxTemperature), "\u{00B0}", Int(minTemperature), "\u{00B0}") as String
+           let minTemperature = todayForecast.main?.minTemperature,
+           let maxTempValue = String.temparatureWithDegreeSymbol(value: "\(maxTemperature)"),
+           let minTempValue = String.temparatureWithDegreeSymbol(value: "\(minTemperature)") {
+            cityMaxMinTemperature.text = NSString(format:TodayWeatherViewConstants.maxMinTempFormat.rawValue as NSString,
+                                                  maxTempValue,
+                                                  minTempValue) as String
         } else {
-            cityMaxMinTemperature.text = "--"
+            cityMaxMinTemperature.text = WeatherSymbols.noValue.rawValue
         }
     }
+}
+
+enum TodayWeatherViewConstants: String {
+    case maxMinTempFormat = "H:%@  L:%@"
 }

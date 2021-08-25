@@ -12,10 +12,21 @@ import UIKit
         get { return layer.cornerRadius }
         set {
               layer.cornerRadius = newValue
-
-              // If masksToBounds is true, subviews will be
-              // clipped to the rounded corners.
               layer.masksToBounds = (newValue > 0)
         }
+    }
+    
+    static func setEdgesConstraints(for childView: UIView, with parentView: UIView) {
+        childView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+        childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
+        childView.topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
+        childView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
+        childView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    static func setCenterConstraints(for childView: UIView, with parentView: UIView) {
+        childView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
+        childView.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
+        childView.translatesAutoresizingMaskIntoConstraints = false
     }
 }

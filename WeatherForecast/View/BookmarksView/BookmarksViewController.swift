@@ -17,9 +17,7 @@ class BookmarksViewController: UIViewController {
             return nil
         }
         self.view.addSubview(errorView)
-        errorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        errorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        errorView.translatesAutoresizingMaskIntoConstraints = false
+        UIView.setCenterConstraints(for: errorView, with: self.view)
         let properties = ErrorProperties(imageName: "bookmark.slash.fill", message: "No saved cities")
         errorView.configureView(with: properties)
         

@@ -20,33 +20,24 @@ class WeatherCell: UICollectionViewCell {
         if let date = data.dateText {
             timeLabel.text = Date.weatherTimeFormat(str: date)
         } else {
-            timeLabel.text = "--"
+            timeLabel.text = WeatherSymbols.noValue.rawValue
         }
         if let humidity = data.main?.humidity {
-            humidityLabel.text = "\(humidity)%"
+            humidityLabel.text = "\(humidity)\(WeatherSymbols.percentage.rawValue)"
         } else {
-            humidityLabel.text = "--"
+            humidityLabel.text = WeatherSymbols.noValue.rawValue
         }
         if let weatherList = data.weather,
            let weather = weatherList.first,
-           let iconUrl = try? ServiceDetails.fetch().iconUrl,
            let icon = weather.icon {
-            let imageUrl = "\(iconUrl)\(icon).png"
-            if let url = URL(string: imageUrl) {
-                do {
-                    let imageData = try Data.init(contentsOf: url)
-                    DispatchQueue.main.async {
-                        self.weatherIcon.image = UIImage(data: imageData)
-                    }
-                } catch  {}
-            }
+            UIImageView.loadImage(in: weatherIcon, with: icon)
         } else {
-            humidityLabel.text = "--"
+            humidityLabel.text = WeatherSymbols.noValue.rawValue
         }
         if let temperature = data.main?.temperature {
-            temperatureLabel.text = NSString(format:"%d%@", Int(temperature),"\u{00B0}") as String
+            temperatureLabel.text = String.temparatureWithDegreeSymbol(value: "\(temperature)")
         } else {
-            temperatureLabel.text = "--"
+            temperatureLabel.text = WeatherSymbols.noValue.rawValue
         }
     }
 }

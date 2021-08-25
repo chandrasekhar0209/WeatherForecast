@@ -35,6 +35,7 @@ class AddNewCityViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        ActivityIndicator.shared.startAnimating(on: self.view)
     }
 }
 
@@ -113,23 +114,27 @@ extension AddNewCityViewController : CLLocationManagerDelegate {
     }
 
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        ActivityIndicator.shared.stopAnimating(on: self.view)
         guard let location = locations.first else {
             return
         }
 
+        mapView.removeAnnotations(mapView.annotations)
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location) {[weak self] placemarks, error in
             if let placemarks = placemarks, let placemark = placemarks.first {
                 self?.selectedCity = placemark.locality
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = location.coordinate
+                annotation.title = placemark.name
+                if let state = placemark.administrativeArea,
+                let country = placemark.country {
+                    annotation.subtitle = "\(state) \(country)"
+                }
+                self?.mapView.addAnnotation(annotation)
             }
         }
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location.coordinate
-        mapView.addAnnotation(annotation)
         coordinate = location.coordinate
-        print(location.coordinate.latitude)
-        print(location.coordinate.longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)

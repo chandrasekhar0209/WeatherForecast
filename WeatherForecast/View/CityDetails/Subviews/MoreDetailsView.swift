@@ -25,7 +25,7 @@ class MoreDetailsView: UITableViewCell {
 
 extension MoreDetailsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        return MoreDetailsCell.rowHeight
     }
 }
 
@@ -48,38 +48,39 @@ extension MoreDetailsView: UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            cell.configureCell(text1: "SUNRISE",
+            cell.configureCell(text1: MoreDetailsViewConstants.sunrise.rawValue,
                                text2: Date.sunRiseTimeFormat(timeStamp: sunrise),
-                               text3: "SUNSET",
+                               text3: MoreDetailsViewConstants.sunset.rawValue,
                                text4: Date.sunRiseTimeFormat(timeStamp: sunset))
             return cell
 
         case 1:
-            cell.configureCell(text1: "CHANCE OF RAIN",
-                               text2: "0%",
-                               text3: "HUMIDITY",
-                               text4: "\(humidity)%")
+            cell.configureCell(text1: MoreDetailsViewConstants.chanceOfRain.rawValue,
+                               text2: "\(MoreDetailsViewConstants.zeroValue.rawValue)\(WeatherSymbols.percentage.rawValue)",
+                               text3: MoreDetailsViewConstants.humidity.rawValue,
+                               text4: "\(humidity)\(WeatherSymbols.percentage.rawValue)")
             return cell
 
         case 2:
-            cell.configureCell(text1: "WIND",
-                               text2: NSString(format:"%d kph", Int(windSpeed)) as String,
-                               text3: "FEELS LIKE",
-                               text4: NSString(format:"%d%@", Int(feelsLike),"\u{00B0}") as String)
+            cell.configureCell(text1: MoreDetailsViewConstants.wind.rawValue,
+                               text2: NSString(format:"%d kph",
+                                               Int(windSpeed)) as String,
+                               text3: MoreDetailsViewConstants.feelsLike.rawValue,
+                               text4: String.temparatureWithDegreeSymbol(value: "\(feelsLike)"))
             return cell
 
         case 3:
-            cell.configureCell(text1: "PERCIPITATION",
-                               text2: "0 cm",
-                               text3: "PRESSURE",
+            cell.configureCell(text1: MoreDetailsViewConstants.percipitation.rawValue,
+                               text2: "\(MoreDetailsViewConstants.zeroValue.rawValue) cm",
+                               text3: MoreDetailsViewConstants.pressure.rawValue,
                                text4: "\(pressure) hPa")
             return cell
 
         case 4:
-            cell.configureCell(text1: "VISIBILITY",
+            cell.configureCell(text1: MoreDetailsViewConstants.visibility.rawValue,
                                text2: "\(visibility/1000) km",
-                               text3: "UV INDEX",
-                               text4: "0")
+                               text3: MoreDetailsViewConstants.uvIndex.rawValue,
+                               text4: MoreDetailsViewConstants.zeroValue.rawValue)
             return cell
 
         default:
@@ -88,4 +89,18 @@ extension MoreDetailsView: UITableViewDataSource {
 
         }
     }
+}
+
+enum MoreDetailsViewConstants: String {
+    case sunrise = "SUNRISE"
+    case sunset = "SUNSET"
+    case chanceOfRain = "CHANCE OF RAIN"
+    case humidity = "HUMIDITY"
+    case wind = "WIND"
+    case feelsLike = "FEELS LIKE"
+    case percipitation = "PERCIPITATION"
+    case pressure = "PRESSURE"
+    case visibility = "VISIBILITY"
+    case uvIndex = "UV INDEX"
+    case zeroValue = "0"
 }

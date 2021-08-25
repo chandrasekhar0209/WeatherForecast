@@ -21,11 +21,7 @@ class CityWeatherDetailsViewController: UIViewController {
             return nil
         }
         todayWeatherView.addSubview(weatherView)
-        weatherView.leadingAnchor.constraint(equalTo: todayWeatherView.leadingAnchor).isActive = true
-        weatherView.trailingAnchor.constraint(equalTo: todayWeatherView.trailingAnchor).isActive = true
-        weatherView.topAnchor.constraint(equalTo: todayWeatherView.topAnchor).isActive = true
-        weatherView.bottomAnchor.constraint(equalTo: todayWeatherView.bottomAnchor).isActive = true
-        weatherView.translatesAutoresizingMaskIntoConstraints = false
+        UIView.setEdgesConstraints(for: weatherView, with: todayWeatherView)
         weatherView.configureView(with: todayForecast)
         
         return weatherView
@@ -49,7 +45,6 @@ class CityWeatherDetailsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ActivityIndicator.shared.startAnimating(on: self.view)
         fetchTodayForecast(router: .todayForecast(bookmarkModel.latitude, bookmarkModel.longitude))
         fetchFiveDayForecast(router: .fiveDayForecast(bookmarkModel.latitude, bookmarkModel.longitude))
     }
@@ -60,6 +55,7 @@ private extension CityWeatherDetailsViewController {
         weatherDetailsTable.delegate = self
         weatherDetailsTable.dataSource = self
         registerCells()
+        ActivityIndicator.shared.startAnimating(on: self.view)
     }
     
     func registerCells() {

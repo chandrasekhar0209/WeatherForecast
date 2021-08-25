@@ -60,6 +60,8 @@
 		C52E836426D549C1005CEE5D /* MoreDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E836226D549C1005CEE5D /* MoreDetailsView.xib */; };
 		C52E836626D563B3005CEE5D /* UIDate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E836526D563B2005CEE5D /* UIDate+Extensions.swift */; };
 		C52E836826D58762005CEE5D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E836726D58762005CEE5D /* ActivityIndicator.swift */; };
+		C52E838F26D64382005CEE5D /* WeatherSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E838E26D64381005CEE5D /* WeatherSymbols.swift */; };
+		C52E839126D645B1005CEE5D /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E839026D645B1005CEE5D /* UIImageView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,8 @@
 		C52E836226D549C1005CEE5D /* MoreDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreDetailsView.xib; sourceTree = "<group>"; };
 		C52E836526D563B2005CEE5D /* UIDate+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDate+Extensions.swift"; sourceTree = "<group>"; };
 		C52E836726D58762005CEE5D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		C52E838E26D64381005CEE5D /* WeatherSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSymbols.swift; sourceTree = "<group>"; };
+		C52E839026D645B1005CEE5D /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +269,7 @@
 				C52E831B26D26608005CEE5D /* UIBarButtonItem+Extensions.swift */,
 				C52E833726D49464005CEE5D /* UIView+Extensions.swift */,
 				C52E836526D563B2005CEE5D /* UIDate+Extensions.swift */,
+				C52E839026D645B1005CEE5D /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				C52E835626D540FA005CEE5D /* DayDetailsCell.xib */,
 				C52E835D26D5483B005CEE5D /* MoreDetailsCell.swift */,
 				C52E835E26D5483B005CEE5D /* MoreDetailsCell.xib */,
+				C52E838E26D64381005CEE5D /* WeatherSymbols.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				C52E830426D0BA48005CEE5D /* BookmarksViewModel.swift in Sources */,
 				C52E835326D52E88005CEE5D /* WeatherCell.swift in Sources */,
 				C52E830A26D13808005CEE5D /* BookmarkModel.swift in Sources */,
+				C52E838F26D64382005CEE5D /* WeatherSymbols.swift in Sources */,
 				C52E836626D563B3005CEE5D /* UIDate+Extensions.swift in Sources */,
 				C52E832426D2D710005CEE5D /* ServiceManager.swift in Sources */,
 				C52E82F726D02B3E005CEE5D /* StoryboardProtocol.swift in Sources */,
@@ -560,6 +567,7 @@
 				C52E82FA26D032B8005CEE5D /* String+Extensions.swift in Sources */,
 				C52E830126D03733005CEE5D /* UINavigationController+Extensions.swift in Sources */,
 				C52E82FD26D035CD005CEE5D /* CoordinatorProtocol.swift in Sources */,
+				C52E839126D645B1005CEE5D /* UIImageView+Extensions.swift in Sources */,
 				C52E832B26D2E944005CEE5D /* CityWeatherDetailsViewController.swift in Sources */,
 				C52E833126D3816E005CEE5D /* FiveDayForecastModel.swift in Sources */,
 				C52E834026D50E61005CEE5D /* HelpViewController.swift in Sources */,

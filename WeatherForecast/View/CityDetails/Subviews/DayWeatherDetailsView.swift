@@ -23,7 +23,7 @@ class DayWeatherDetailsView: UITableViewCell {
 
 extension DayWeatherDetailsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 35.0
+        return DayDetailsCell.rowHeight
     }
 }
 

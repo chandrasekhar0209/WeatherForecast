@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lep-ca-1bw">
-                        <rect key="frame" x="5" y="0.0" width="288" height="44"/>
+                        <rect key="frame" x="5" y="0.0" width="289.5" height="44"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="MQw-Oe-EEA">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
@@ -31,7 +31,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eB-js-gKY">
-                                <rect key="frame" x="60" y="0.0" width="228" height="44"/>
+                                <rect key="frame" x="60" y="0.0" width="229.5" height="44"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -56,6 +56,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="city" width="50" height="37.5"/>
+        <image name="city" width="50" height="50"/>
     </resources>
 </document>

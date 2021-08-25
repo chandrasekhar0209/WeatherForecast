@@ -7,11 +7,7 @@
 
 import UIKit
 
-class WeatherTabController: UITabBarController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-}
+class WeatherTabController: UITabBarController {}
 
 extension WeatherTabController {
     @objc func leftButtonAction(sender: UIBarButtonItem) {
