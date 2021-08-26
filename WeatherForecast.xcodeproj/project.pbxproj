@@ -67,6 +67,7 @@
 		C52E83F026D80FA8005CEE5D /* CityDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83EF26D80FA8005CEE5D /* CityDetailsViewModelTests.swift */; };
 		C52E83F226D8130E005CEE5D /* GenericCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83F126D8130C005CEE5D /* GenericCollectionViewController.swift */; };
 		C52E83F426D81AA5005CEE5D /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83F326D81AA5005CEE5D /* UIStoryboard+Extensions.swift */; };
+		C52E83F726D82852005CEE5D /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83F626D82852005CEE5D /* UserDefaultsStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		C52E83EF26D80FA8005CEE5D /* CityDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		C52E83F126D8130C005CEE5D /* GenericCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewController.swift; sourceTree = "<group>"; };
 		C52E83F326D81AA5005CEE5D /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
+		C52E83F626D82852005CEE5D /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 		C52E82BD26CFC8F3005CEE5D /* WeatherForecast */ = {
 			isa = PBXGroup;
 			children = (
+				C52E83F526D8283F005CEE5D /* Helper */,
 				C52E832526D2DA58005CEE5D /* NetworkClient */,
 				C52E831D26D294D7005CEE5D /* Services */,
 				C52E830526D0C7AA005CEE5D /* LocalStorage */,
@@ -468,6 +471,14 @@
 			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
+		C52E83F526D8283F005CEE5D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C52E83F626D82852005CEE5D /* UserDefaultsStorage.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -636,6 +647,7 @@
 				C52E830C26D13E17005CEE5D /* EntityDetails.swift in Sources */,
 				C52E835F26D5483B005CEE5D /* MoreDetailsCell.swift in Sources */,
 				C52E82F426D027E8005CEE5D /* WeatherTabController.swift in Sources */,
+				C52E83F726D82852005CEE5D /* UserDefaultsStorage.swift in Sources */,
 				C52E82BF26CFC8F3005CEE5D /* AppDelegate.swift in Sources */,
 				C52E833826D49464005CEE5D /* UIView+Extensions.swift in Sources */,
 				C52E82C126CFC8F3005CEE5D /* SceneDelegate.swift in Sources */,

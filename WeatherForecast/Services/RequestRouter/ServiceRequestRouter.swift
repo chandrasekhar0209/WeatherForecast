@@ -44,10 +44,11 @@ extension ServiceRequestRouter {
     
     public func asURL() throws -> URL {
         var urlComponents = URLComponents(string:fullUrl)
-        if let value = try? ServiceDetails.fetch().appId {
+        if let value = try? ServiceDetails.fetch().appId,
+           let units = UserDefaultsStorage.shared.units as? String {
             urlComponents?.queryItems = [
                 URLQueryItem(name: "appid", value: value),
-                URLQueryItem(name: "units", value: "metric")
+                URLQueryItem(name: "units", value: units)
             ]
         }
         for (key, value) in queryItems {

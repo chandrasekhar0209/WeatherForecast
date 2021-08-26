@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,11 +19,106 @@
                     <view key="view" contentMode="scaleToFill" id="5MJ-Pg-xox">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1H8-RF-DO3">
+                                <rect key="frame" x="20" y="44" width="374" height="626"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVB-6X-SWF">
+                                <rect key="frame" x="20" y="670" width="374" height="128"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zg0-9t-aQM">
+                                        <rect key="frame" x="5" y="0.0" width="364" height="128"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5X-E9-xVO">
+                                                <rect key="frame" x="0.0" y="0.0" width="364" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="FDd-Ye-Err"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="20"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="L25-zI-CIe">
+                                                <rect key="frame" x="0.0" y="46" width="364" height="36"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlD-S8-UqF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="36"/>
+                                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jwb-bu-3Va">
+                                                        <rect key="frame" x="61" y="0.0" width="303" height="37"/>
+                                                        <segments>
+                                                            <segment title="Metric"/>
+                                                            <segment title="Imperial"/>
+                                                        </segments>
+                                                        <color key="selectedSegmentTintColor" systemColor="systemYellowColor"/>
+                                                        <connections>
+                                                            <action selector="segmentChanged:" destination="lmY-85-Hzx" eventType="valueChanged" id="jGM-fJ-9DW"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="j5J-oS-Hxg">
+                                                <rect key="frame" x="0.0" y="92" width="364" height="36"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Saved Cities :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0F-GY-KWc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="136.5" height="36"/>
+                                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCV-En-lCq">
+                                                        <rect key="frame" x="151.5" y="0.0" width="212.5" height="36"/>
+                                                        <color key="backgroundColor" red="0.21902179720000001" green="0.44980967039999997" blue="0.51765793559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
+                                                        <state key="normal" title="Reset">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="resetTapped:" destination="lmY-85-Hzx" eventType="touchUpInside" id="xho-OL-Kqv"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Eck-rZ-f2V"/>
+                                    <constraint firstItem="Zg0-9t-aQM" firstAttribute="top" secondItem="qVB-6X-SWF" secondAttribute="top" id="RXS-Ps-tzc"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zg0-9t-aQM" secondAttribute="bottom" id="icc-ZE-WJw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zg0-9t-aQM" secondAttribute="trailing" constant="5" id="jr7-m0-x6J"/>
+                                    <constraint firstItem="Zg0-9t-aQM" firstAttribute="leading" secondItem="qVB-6X-SWF" secondAttribute="leading" constant="5" id="zN0-yU-tYC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1H8-RF-DO3" firstAttribute="leading" secondItem="5MJ-Pg-xox" secondAttribute="leadingMargin" id="5lR-e7-Zit"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qVB-6X-SWF" secondAttribute="trailing" id="SFb-Bw-oD8"/>
+                            <constraint firstItem="1H8-RF-DO3" firstAttribute="top" secondItem="xdk-Gw-0Xl" secondAttribute="bottom" id="T1C-VG-UGU"/>
+                            <constraint firstItem="qVB-6X-SWF" firstAttribute="top" secondItem="1H8-RF-DO3" secondAttribute="bottom" id="XEG-oU-lIN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1H8-RF-DO3" secondAttribute="trailing" id="faU-IM-DM8"/>
+                            <constraint firstItem="Xoe-9Y-RY6" firstAttribute="top" secondItem="qVB-6X-SWF" secondAttribute="bottom" constant="15" id="jAC-QZ-sri"/>
+                            <constraint firstItem="qVB-6X-SWF" firstAttribute="leading" secondItem="5MJ-Pg-xox" secondAttribute="leadingMargin" id="njO-WN-phm"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Help" image="questionmark.circle" catalog="system" selectedImage="questionmark.circle.fill" id="1mf-g5-XoG">
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="unitsSegment" destination="jwb-bu-3Va" id="lBq-uv-Juc"/>
+                        <outlet property="webView" destination="1H8-RF-DO3" id="MsV-HL-Cu1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfk-ck-dju" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,6 +15,7 @@ protocol BookmarksSaveProtocol {
 protocol BookmarksFetchProtocol {
     func fetchAllSavedBookmarks(completion: (StorageResult<ManagedObjects, Error>) -> Void)
     func deleteBookMark(_ data: NSManagedObject, completion: (StorageResult<String, Error>) -> Void)
+    func deleteAllSavedBookmarks(completion: (StorageResult<String, Error>) -> Void)
 }
 
 class BookMarksViewModel {
@@ -46,6 +47,12 @@ extension BookMarksViewModel: BookmarksFetchProtocol {
     
     func deleteBookMark(_ data: NSManagedObject, completion: (StorageResult<String, Error>) -> Void) {
         storageManager.deleteRecord(model: data) { result in
+            completion(result)
+        }
+    }
+    
+    func deleteAllSavedBookmarks(completion: (StorageResult<String, Error>) -> Void) {
+        storageManager.deleteAllRecords(forEntity: .bookmarks) { result in
             completion(result)
         }
     }

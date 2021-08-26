@@ -15,6 +15,7 @@ protocol StorageManagerProtocol {
                       completion: (StorageResult<ManagedObjects, Error>) -> Void)
     func deleteRecord(model: NSManagedObject,
                       completion: (StorageResult<String, Error>) -> Void)
+    func deleteAllRecords(forEntity: EntityName, completion: (StorageResult<String, Error>) -> Void)
 }
 
 class StorageManager {
@@ -74,6 +75,22 @@ extension StorageManager: StorageManagerProtocol {
             try context.save()
             completion(.success(Success.message.rawValue))
         } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    func deleteAllRecords(forEntity: EntityName, completion: (StorageResult<String, Error>) -> Void) {
+        let context = persistentContainer.viewContext
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: forEntity.rawValue)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        do
+        {
+            try context.execute(deleteRequest)
+            try context.save()
+            completion(.success(Success.message.rawValue))
+        }
+        catch
+        {
             completion(.failure(error))
         }
     }

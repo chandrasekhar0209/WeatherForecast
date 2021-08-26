@@ -10,7 +10,9 @@ import UIKit
 class WeatherTabCoordinator: CoordinatorProtocol {
     func loadRootViewController(in window: UIWindow?) {
         guard let weatherTabController = UIStoryboard.instantiateControllerFromStoryboard(controller: WeatherTabController.self) else { return }
-        
+        if UserDefaultsStorage.shared.units == nil {
+            UserDefaultsStorage.shared.units = Units.metric.rawValue
+        }
         let leftBarButtonItem = UIBarButtonItem(title: "Edit",
                                                 style: .plain,
                                                 target: weatherTabController,
