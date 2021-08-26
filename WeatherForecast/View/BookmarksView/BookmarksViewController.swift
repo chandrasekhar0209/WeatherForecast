@@ -113,11 +113,10 @@ private extension BookmarksViewController {
     }
     
     func moveToNextPage(model: NSManagedObject) {
-        let cityDetails: StoryboardProtocol = CityWeatherDetailsViewController()
         guard let cityName = model.value(forKey: BookmarkEntityKeys.cityName.rawValue) as? String,
               let latitude = model.value(forKey: BookmarkEntityKeys.latitude.rawValue) as? Double,
               let longitude = model.value(forKey: BookmarkEntityKeys.longitude.rawValue) as? Double,
-              let viewController = cityDetails.instantiateControllerFromStoryboard() as? CityWeatherDetailsViewController else {
+              let viewController = UIStoryboard.instantiateControllerFromStoryboard(controller: CityWeatherDetailsViewController.self) else {
             return
         }
         let bookMarkModel = BookmarkModel(cityName: cityName, latitude: latitude, longitude: longitude)

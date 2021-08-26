@@ -8,8 +8,6 @@
 import UIKit
 
 class WeatherCell: UICollectionViewCell {
-    static let identifier = "WeatherCell"
-    static let nibName = "WeatherCell"
     static let cellSize: CGSize = CGSize(width: 70.0, height: 110.0)
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!

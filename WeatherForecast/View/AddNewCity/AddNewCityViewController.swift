@@ -159,17 +159,3 @@ extension AddNewCityViewController: HandleMapSearch {
         setMapRegion(placemark: placemark)
     }
 }
-
-extension AddNewCityViewController: StoryboardProtocol {
-    func initialiseStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: Storybords.weatherForecast.rawValue, bundle: nil)
-    }
-    
-    func instantiateControllerFromStoryboard() -> UIViewController? {
-        guard let viewController = initialiseStoryboard().instantiateViewController(identifier: "AddNewCityViewController") as? AddNewCityViewController else {
-            return nil
-        }
-        
-        return viewController
-    }
-}

@@ -8,8 +8,6 @@
 import UIKit
 
 class MoreDetailsCell: UITableViewCell {
-    static let identifier = "MoreDetailsCell"
-    static let nibName = "MoreDetailsCell"
     static let rowHeight: CGFloat = 50.0
     @IBOutlet weak var moreLabel1: UILabel!
     @IBOutlet weak var moreLabel2: UILabel!

@@ -57,7 +57,10 @@ class GenericTableViewController<T, Cell: UITableViewCell>: UITableViewControlle
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = isDefaultCell ? "Cell" : "\(Cell.self)"
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! Cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? Cell else {
+            return UITableViewCell()
+        }
+        
         let item = items[indexPath.row]
         configure(cell, item, indexPath.row)
         return cell

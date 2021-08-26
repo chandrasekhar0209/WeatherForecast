@@ -16,7 +16,6 @@
 		C52E82D926CFC8F8005CEE5D /* WeatherForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E82D826CFC8F8005CEE5D /* WeatherForecastTests.swift */; };
 		C52E82E426CFC8F8005CEE5D /* WeatherForecastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E82E326CFC8F8005CEE5D /* WeatherForecastUITests.swift */; };
 		C52E82F426D027E8005CEE5D /* WeatherTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E82F326D027E8005CEE5D /* WeatherTabController.swift */; };
-		C52E82F726D02B3E005CEE5D /* StoryboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E82F626D02B3E005CEE5D /* StoryboardProtocol.swift */; };
 		C52E82FA26D032B8005CEE5D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E82F926D032B8005CEE5D /* String+Extensions.swift */; };
 		C52E82FD26D035CD005CEE5D /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E82FC26D035CD005CEE5D /* CoordinatorProtocol.swift */; };
 		C52E82FF26D0363E005CEE5D /* WeatherTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E82FE26D0363E005CEE5D /* WeatherTabCoordinator.swift */; };
@@ -47,7 +46,6 @@
 		C52E834526D52455005CEE5D /* TodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E834426D52454005CEE5D /* TodayWeatherView.swift */; };
 		C52E834726D52465005CEE5D /* TodayWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E834626D52465005CEE5D /* TodayWeatherView.xib */; };
 		C52E834F26D52B93005CEE5D /* WeatherCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E834D26D52B93005CEE5D /* WeatherCollectionView.swift */; };
-		C52E835026D52B93005CEE5D /* WeatherCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E834E26D52B93005CEE5D /* WeatherCollectionView.xib */; };
 		C52E835326D52E88005CEE5D /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E835126D52E88005CEE5D /* WeatherCell.swift */; };
 		C52E835426D52E88005CEE5D /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E835226D52E88005CEE5D /* WeatherCell.xib */; };
 		C52E835726D540FA005CEE5D /* DayDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E835526D540FA005CEE5D /* DayDetailsCell.swift */; };
@@ -67,6 +65,8 @@
 		C52E83EB26D7FFEB005CEE5D /* StorageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83EA26D7FFEB005CEE5D /* StorageManagerTests.swift */; };
 		C52E83EE26D80D99005CEE5D /* BookmarkViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83ED26D80D99005CEE5D /* BookmarkViewModelTests.swift */; };
 		C52E83F026D80FA8005CEE5D /* CityDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83EF26D80FA8005CEE5D /* CityDetailsViewModelTests.swift */; };
+		C52E83F226D8130E005CEE5D /* GenericCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83F126D8130C005CEE5D /* GenericCollectionViewController.swift */; };
+		C52E83F426D81AA5005CEE5D /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E83F326D81AA5005CEE5D /* UIStoryboard+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +102,6 @@
 		C52E82E326CFC8F8005CEE5D /* WeatherForecastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastUITests.swift; sourceTree = "<group>"; };
 		C52E82E526CFC8F8005CEE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C52E82F326D027E8005CEE5D /* WeatherTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabController.swift; sourceTree = "<group>"; };
-		C52E82F626D02B3E005CEE5D /* StoryboardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardProtocol.swift; sourceTree = "<group>"; };
 		C52E82F926D032B8005CEE5D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C52E82FC26D035CD005CEE5D /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		C52E82FE26D0363E005CEE5D /* WeatherTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabCoordinator.swift; sourceTree = "<group>"; };
@@ -133,7 +132,6 @@
 		C52E834426D52454005CEE5D /* TodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherView.swift; sourceTree = "<group>"; };
 		C52E834626D52465005CEE5D /* TodayWeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayWeatherView.xib; sourceTree = "<group>"; };
 		C52E834D26D52B93005CEE5D /* WeatherCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionView.swift; sourceTree = "<group>"; };
-		C52E834E26D52B93005CEE5D /* WeatherCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCollectionView.xib; sourceTree = "<group>"; };
 		C52E835126D52E88005CEE5D /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		C52E835226D52E88005CEE5D /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
 		C52E835526D540FA005CEE5D /* DayDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDetailsCell.swift; sourceTree = "<group>"; };
@@ -153,6 +151,8 @@
 		C52E83EA26D7FFEB005CEE5D /* StorageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerTests.swift; sourceTree = "<group>"; };
 		C52E83ED26D80D99005CEE5D /* BookmarkViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModelTests.swift; sourceTree = "<group>"; };
 		C52E83EF26D80FA8005CEE5D /* CityDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		C52E83F126D8130C005CEE5D /* GenericCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewController.swift; sourceTree = "<group>"; };
+		C52E83F326D81AA5005CEE5D /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +272,6 @@
 		C52E82F526D02B0F005CEE5D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C52E82F626D02B3E005CEE5D /* StoryboardProtocol.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -286,6 +285,7 @@
 				C52E833726D49464005CEE5D /* UIView+Extensions.swift */,
 				C52E836526D563B2005CEE5D /* UIDate+Extensions.swift */,
 				C52E839026D645B1005CEE5D /* UIImageView+Extensions.swift */,
+				C52E83F326D81AA5005CEE5D /* UIStoryboard+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -405,7 +405,6 @@
 				C52E834426D52454005CEE5D /* TodayWeatherView.swift */,
 				C52E834626D52465005CEE5D /* TodayWeatherView.xib */,
 				C52E834D26D52B93005CEE5D /* WeatherCollectionView.swift */,
-				C52E834E26D52B93005CEE5D /* WeatherCollectionView.xib */,
 				C52E835926D543CC005CEE5D /* DayWeatherDetailsView.swift */,
 				C52E836126D549C1005CEE5D /* MoreDetailsView.swift */,
 				C52E835126D52E88005CEE5D /* WeatherCell.swift */,
@@ -423,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				C52E839326D67E4B005CEE5D /* GenericTableViewController.swift */,
+				C52E83F126D8130C005CEE5D /* GenericCollectionViewController.swift */,
 			);
 			path = ReuseableView;
 			sourceTree = "<group>";
@@ -573,7 +573,6 @@
 			files = (
 				C52E835426D52E88005CEE5D /* WeatherCell.xib in Resources */,
 				C52E82CE26CFC8F7005CEE5D /* LaunchScreen.storyboard in Resources */,
-				C52E835026D52B93005CEE5D /* WeatherCollectionView.xib in Resources */,
 				C52E82CB26CFC8F7005CEE5D /* Assets.xcassets in Resources */,
 				C52E82C626CFC8F3005CEE5D /* WeatherForecast.storyboard in Resources */,
 				C52E831326D20183005CEE5D /* BookmarkCell.xib in Resources */,
@@ -616,7 +615,6 @@
 				C52E838F26D64382005CEE5D /* WeatherSymbols.swift in Sources */,
 				C52E836626D563B3005CEE5D /* UIDate+Extensions.swift in Sources */,
 				C52E832426D2D710005CEE5D /* ServiceManager.swift in Sources */,
-				C52E82F726D02B3E005CEE5D /* StoryboardProtocol.swift in Sources */,
 				C52E832926D2E524005CEE5D /* ServiceDetails.swift in Sources */,
 				C52E82FF26D0363E005CEE5D /* WeatherTabCoordinator.swift in Sources */,
 				C52E831226D20183005CEE5D /* BookmarkCell.swift in Sources */,
@@ -628,6 +626,7 @@
 				C52E832F26D371F5005CEE5D /* TodayForecastModel.swift in Sources */,
 				C52E82FA26D032B8005CEE5D /* String+Extensions.swift in Sources */,
 				C52E830126D03733005CEE5D /* UINavigationController+Extensions.swift in Sources */,
+				C52E83F226D8130E005CEE5D /* GenericCollectionViewController.swift in Sources */,
 				C52E82FD26D035CD005CEE5D /* CoordinatorProtocol.swift in Sources */,
 				C52E839126D645B1005CEE5D /* UIImageView+Extensions.swift in Sources */,
 				C52E832B26D2E944005CEE5D /* CityWeatherDetailsViewController.swift in Sources */,
@@ -646,6 +645,7 @@
 				C52E835726D540FA005CEE5D /* DayDetailsCell.swift in Sources */,
 				C52E836326D549C1005CEE5D /* MoreDetailsView.swift in Sources */,
 				C52E831626D20682005CEE5D /* ErrorView.swift in Sources */,
+				C52E83F426D81AA5005CEE5D /* UIStoryboard+Extensions.swift in Sources */,
 				C52E831A26D259A8005CEE5D /* AddNewCityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -831,6 +831,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PT42F6RZUP;
 				INFOPLIST_FILE = WeatherForecast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -850,6 +851,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PT42F6RZUP;
 				INFOPLIST_FILE = WeatherForecast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

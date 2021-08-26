@@ -23,25 +23,10 @@ extension WeatherTabController {
     }
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {
-        let addNewCity: StoryboardProtocol = AddNewCityViewController()
-        guard let addNewCityViewController = addNewCity.instantiateControllerFromStoryboard() else {
+        guard let addNewCityViewController = UIStoryboard.instantiateControllerFromStoryboard(controller: AddNewCityViewController.self) else {
             return
         }
         
         self.navigationController?.pushViewController(addNewCityViewController, animated: true)
-    }
-}
-
-extension WeatherTabController: StoryboardProtocol {
-    func initialiseStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: Storybords.weatherForecast.rawValue, bundle: nil)
-    }
-    
-    func instantiateControllerFromStoryboard() -> UIViewController? {
-        guard let viewController = initialiseStoryboard().instantiateViewController(identifier: String.getClassName(from: WeatherTabController.self)) as? WeatherTabController else {
-            return nil
-        }
-        
-        return viewController
     }
 }

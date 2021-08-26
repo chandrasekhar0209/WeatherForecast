@@ -8,8 +8,6 @@
 import UIKit
 
 class DayDetailsCell: UITableViewCell {
-    static let identifier = "DayDetailsCell"
-    static let nibName = "DayDetailsCell"
     static let rowHeight: CGFloat = 35.0
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weatherIconImage: UIImageView!

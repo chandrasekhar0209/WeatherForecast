@@ -59,7 +59,7 @@ private extension CityWeatherDetailsViewController {
     }
     
     func registerCells() {
-        weatherDetailsTable.register(UINib(nibName: WeatherCollectionView.nibName, bundle: nil), forCellReuseIdentifier: WeatherCollectionView.identifier)
+        weatherDetailsTable.register(WeatherCollectionView.self, forCellReuseIdentifier: "\(WeatherCollectionView.self)")
         weatherDetailsTable.register(DayWeatherDetailsView.self, forCellReuseIdentifier: "\(DayWeatherDetailsView.self)")
         weatherDetailsTable.register(MoreDetailsView.self, forCellReuseIdentifier: "\(MoreDetailsView.self)")
     }
@@ -141,7 +141,7 @@ extension CityWeatherDetailsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.configureCell(with: weatherForecastList)
+            cell.weatherForecastList = weatherForecastList
             
             return cell
             
@@ -163,19 +163,5 @@ extension CityWeatherDetailsViewController: UITableViewDataSource {
             
             return cell
         }
-    }
-}
-
-extension CityWeatherDetailsViewController: StoryboardProtocol {
-    func initialiseStoryboard() -> UIStoryboard {
-        return UIStoryboard(name: Storybords.weatherForecast.rawValue, bundle: nil)
-    }
-    
-    func instantiateControllerFromStoryboard() -> UIViewController? {
-        guard let viewController = initialiseStoryboard().instantiateViewController(identifier: "CityWeatherDetailsViewController") as? CityWeatherDetailsViewController else {
-            return nil
-        }
-        
-        return viewController
     }
 }
