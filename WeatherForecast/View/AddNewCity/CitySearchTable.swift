@@ -9,10 +9,44 @@ import UIKit
 import MapKit
 
 class CitySearchTable: UITableViewController {
-    var matchingItems:[MKMapItem] = []
+    var matchingItems = [MKMapItem]() {
+        didSet {
+            genericTableController.updatesItems(items: matchingItems)
+        }
+    }
     var mapView: MKMapView? = nil
     var handleMapSearchDelegate:HandleMapSearch? = nil
     static let identifier = "SearchedCityName"
+    var genericTableController: GenericTableViewController<MKMapItem, UITableViewCell>!
+    
+    init(mapView: MKMapView, delegate: HandleMapSearch) {
+        self.mapView = mapView
+        self.handleMapSearchDelegate = delegate
+        super.init(style: .plain)
+        configureTable()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension CitySearchTable {
+    func configureTable() {
+        genericTableController = GenericTableViewController(items: matchingItems, isDefaultCell: true, configure: { (cell: UITableViewCell, matchinItem, index) in
+            cell.textLabel?.text = matchinItem.placemark.name
+        }, selectHandler: {[weak self] matchingItem in
+            self?.handleMapSearchDelegate?.dropPinZoomIn(placemark: matchingItem.placemark)
+            self?.dismiss(animated: true, completion: nil)
+        }, editHandler: { _ in })
+        addChildViewController()
+    }
+    
+    func addChildViewController() {
+        self.addChild(genericTableController)
+        self.view.addSubview(genericTableController.view)
+        genericTableController.didMove(toParent: self)
+    }
 }
 
 extension CitySearchTable: UISearchResultsUpdating {
@@ -28,35 +62,6 @@ extension CitySearchTable: UISearchResultsUpdating {
                 return
             }
             self.matchingItems = response.mapItems
-            self.tableView.reloadData()
         }
-    }
-}
-
-extension CitySearchTable {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return matchingItems.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CitySearchTable.identifier) else {
-            return UITableViewCell()
-        }
-        
-        let selectedItem = matchingItems[indexPath.row].placemark
-        cell.textLabel?.text = selectedItem.name
-        
-        let address = "\(selectedItem.administrativeArea ?? ""), \(selectedItem.country ?? "")"
-        cell.detailTextLabel?.text = address
-        
-        return cell
-    }
-}
-
-extension CitySearchTable {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedItem = matchingItems[indexPath.row].placemark
-        handleMapSearchDelegate?.dropPinZoomIn(placemark: selectedItem)
-        dismiss(animated: true, completion: nil)
     }
 }

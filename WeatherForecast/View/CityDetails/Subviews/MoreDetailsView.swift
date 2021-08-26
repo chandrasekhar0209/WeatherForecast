@@ -29,7 +29,7 @@ class MoreDetailsView: UITableViewCell {
 
     func configureCell() {
         let tableProperties = TableProperties(rowHeight: MoreDetailsCell.rowHeight)
-        tableController = GenericTableViewController(items: [], tableProperties: tableProperties, configure: {[weak self] (cell: MoreDetailsCell, _, index) in
+        tableController = GenericTableViewController(items: [], tableProperties: tableProperties, isDefaultCell: false, configure: {[weak self] (cell: MoreDetailsCell, _, index) in
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             guard self?.todayForecast != nil,

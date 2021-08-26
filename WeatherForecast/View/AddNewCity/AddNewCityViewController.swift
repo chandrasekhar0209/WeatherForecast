@@ -61,9 +61,7 @@ private extension AddNewCityViewController {
     }
     
     func configureCitySearchTable() {
-        citySearchTable = storyboard!.instantiateViewController(withIdentifier: "CitySearchTable") as? CitySearchTable
-        citySearchTable?.mapView = mapView
-        citySearchTable?.handleMapSearchDelegate = self
+        citySearchTable = CitySearchTable(mapView: mapView, delegate: self)
     }
     
     func configureSearchController() {

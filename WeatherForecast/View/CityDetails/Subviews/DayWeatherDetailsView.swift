@@ -28,7 +28,7 @@ class DayWeatherDetailsView: UITableViewCell {
 
     func configureCell(with list: [TodayForecastModel]) {
         let tableProperties = TableProperties(rowHeight: DayDetailsCell.rowHeight)
-        tableController = GenericTableViewController(items: list, tableProperties: tableProperties) { (cell: DayDetailsCell, todayForecast, index)  in
+        tableController = GenericTableViewController(items: list, tableProperties: tableProperties, isDefaultCell: false) { (cell: DayDetailsCell, todayForecast, index)  in
             cell.configureCell(with: todayForecast)
             cell.backgroundColor = .clear
             cell.selectionStyle = .none

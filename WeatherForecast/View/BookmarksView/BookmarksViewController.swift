@@ -62,7 +62,7 @@ extension BookmarksViewController {
 private extension BookmarksViewController {
     func configureController() {
         let tableProperties = TableProperties(rowHeight: 60.0)
-        tableController = GenericTableViewController(items: bookmarks, tableProperties: tableProperties, configure: { (cell: BookmarkCell, bookmark, index) in
+        tableController = GenericTableViewController(items: bookmarks, tableProperties: tableProperties, isDefaultCell: false, configure: { (cell: BookmarkCell, bookmark, index) in
             cell.configureCell(with: bookmark)
             cell.backgroundColor = .clear
             cell.selectionStyle = .none

@@ -20,16 +20,22 @@ class GenericTableViewController<T, Cell: UITableViewCell>: UITableViewControlle
     var configure: (Cell, T, Int) -> Void
     var selectHandler: (T) -> Void
     var editHandler: (Int) -> Void
-    init(items: [T], tableProperties: TableProperties, configure: @escaping (Cell, T, Int) -> Void, selectHandler: @escaping (T) -> Void, editHandler: @escaping (Int) -> Void) {
+    var isDefaultCell: Bool = false
+    init(items: [T], tableProperties: TableProperties = TableProperties(), isDefaultCell: Bool, configure: @escaping (Cell, T, Int) -> Void, selectHandler: @escaping (T) -> Void, editHandler: @escaping (Int) -> Void) {
         self.items = items
         self.configure = configure
         self.selectHandler = selectHandler
         self.editHandler = editHandler
         self.tableProperties = tableProperties
+        self.isDefaultCell = isDefaultCell
         super.init(style: .plain)
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
-        self.tableView.register(UINib(nibName: "\(Cell.self)", bundle: nil), forCellReuseIdentifier: "\(Cell.self)")
+        if isDefaultCell {
+            self.tableView.register(Cell.self, forCellReuseIdentifier: "Cell")
+        } else {
+            self.tableView.register(UINib(nibName: "\(Cell.self)", bundle: nil), forCellReuseIdentifier: "\(Cell.self)")
+        }
     }
     
     func updatesItems(items: [T]) {
@@ -50,7 +56,8 @@ class GenericTableViewController<T, Cell: UITableViewCell>: UITableViewControlle
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(Cell.self)", for: indexPath) as! Cell
+        let identifier = isDefaultCell ? "Cell" : "\(Cell.self)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! Cell
         let item = items[indexPath.row]
         configure(cell, item, indexPath.row)
         return cell
