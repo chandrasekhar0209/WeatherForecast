@@ -19,6 +19,8 @@ class GenericCollectionViewController<T, Cell: UICollectionViewCell>: UICollecti
         self.selectHandler = selectHandler
         super.init(collectionViewLayout: layout)
         self.collectionView.backgroundColor = .clear
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.showsVerticalScrollIndicator = false
         if isDefaultCell {
             self.collectionView.register(Cell.self, forCellWithReuseIdentifier: "Cell")
         } else {

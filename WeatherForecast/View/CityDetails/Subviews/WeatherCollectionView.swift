@@ -28,14 +28,14 @@ class WeatherCollectionView: UITableViewCell {
 
     func configureCell(with list: [TodayForecastModel]) {
         collectionController = GenericCollectionViewController(items: list, isDefaultCell: false, layout: setLayout(), configure: { (cell: WeatherCell, todayForecast, index) in
-            
+            cell.configureCell(with: todayForecast)
         }, selectHandler: { _ in })
-        self.addSubview(collectionController.collectionView)
+        self.contentView.addSubview(collectionController.collectionView)
         self.backgroundColor = .clear
         self.selectionStyle = .none
         collectionController.collectionView.layer.borderColor = UIColor.white.cgColor
         collectionController.collectionView.layer.borderWidth = 0.5
-        UIView.setEdgesConstraints(for: collectionController.collectionView, with: self)
+        UIView.setEdgesConstraints(for: collectionController.collectionView, with: self.contentView)
     }
     
     override func layoutSubviews() {
